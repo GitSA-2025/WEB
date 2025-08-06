@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styleForm.css">
+    <link rel="stylesheet" href="CSS/code-input.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <title>Verificação - Crachá On-line</title>
+</head>
+<body>
+    <div class="container">
+       <div class="background_form">
+            <form action="home.html" method="post" id="verificationForm">
+                <h1 class="inter-title">Verificação de dois fatores</h2>
+                <p class="inter-subtitle">Verifique seu e-mail. Enviamos um código de verificação para continuar o cadastro.</p>
+                
+                <div class="code-input">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
+                </div>
+
+                <button type="submit" name="btnLogin" class="btnLogin">
+                    <span class="material-icons">login</span>
+                    Entrar
+                </button><br>
+                <div class="row">
+                    <p class="inter-text">Não recebeu o código?</p> <a href="2FA.html" class="inter-linktext">Reenvie o código por aqui.</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <img src="IMG/logo_k.png" alt="Logo da empresa" class="logo-fixa">
+
+    <script src="JS/code-input.js" defer></script>
+    <script src="JS/2FA.js" defer></script>
+</body>
+</html>

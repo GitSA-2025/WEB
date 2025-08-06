@@ -1,0 +1,25 @@
+.code-input {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.code-input input {
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+  border: 2px solid #27445B;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #27445B;
+  outline: none;
+  transition: 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.code-input input:focus {
+  border-color: #66aaff;
+  box-shadow: 0 0 0 2px rgba(102, 170, 255, 0.2);
+}

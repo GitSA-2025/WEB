@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styleForm.css">
+    <link rel="stylesheet" href="CSS/home.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <title>Home - Crachá On-line</title>
+</head>
+<body>
+    <div class="container">
+       <div class="background_form">
+            <img src="IMG/account_circle.png" alt="foto de perfil do usuário" class="profile-picture">
+
+            <p class="info-text">
+                <span class="material-icons" style="font-size: 23px;">
+                    person
+                </span>
+                Nome
+            </p>
+            <p class="userinfo-text" id="userName">
+                Nome
+            </p>
+            <p class="info-text">
+                <span class="material-icons" style="font-size: 23px;">
+                    badge
+                </span>
+                CPF
+            </p>
+            <p class="userinfo-text" id="userCPF">
+                CPF do usuário
+            </p>
+            <p class="info-text">
+                <span class="material-icons" style="font-size: 23px;">
+                    email
+                </span>
+                E-mail
+            </p>
+            <p class="userinfo-text" id="userEmail">
+                Email
+            </p>
+            <p class="info-text">
+                <span class="material-icons" style="font-size: 23px;">
+                    phone
+                </span>
+                Telefone
+            </p>
+            <p class="userinfo-text" id="userPhone">
+                (11) 99999-9999
+            </p>
+            <p class="info-text">
+                <span class="material-icons" style="font-size: 23px;">
+                    group
+                </span>
+                Tipo de pessoa
+            </p>
+            <p class="userinfo-text" id="userType">
+                Tipo de pessoa
+            </p>
+
+            <div class="button-container">
+                <button type="button" class="btnGenerateQR" onclick="window.location.href='qrcode.html'">
+                    <span class="material-icons">
+                        qr_code
+                    </span>
+                    Gerar QR Code
+                </button>
+                <button type="button" class="btnEditProfile" onclick="window.location.href='editProfile.html'">
+                    <span class="material-icons">
+                        manage_accounts
+                    </span>
+                    Editar perfil
+                </button>
+            </div>
+            
+
+            <div class="button-container-logout">
+                <button type="button" class="btnLogout" onclick="window.location.href='index.html'">
+                    <span class="material-icons">
+                        logout
+                    </span>
+                    Sair
+                </button> 
+            </div>
+            
+
+        </div>
+    </div>
+
+    <img src="IMG/logo_k.png" alt="Logo da empresa" class="logo-fixa">
+
+    
+    <script src="JS/home.js" defer></script>
+    <script src="JS/qrcode.js" defer></script>
+</body>
+</html>

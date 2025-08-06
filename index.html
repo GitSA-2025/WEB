@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styleForm.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <title>Login - Crachá On-line</title>
+</head>
+<body>
+    <div class="container">
+       <div class="background_form">
+            <form action="" method="post" id="loginForm">
+                <h1 class="inter-title">Seja bem-vindo novamente ao Crachá On-line!</h2>
+                <p class="inter-subtitle">Realize o seu login para ter acesso ao seu crachá.</p>
+                
+                <div class="input-group">
+                    <input type="email" name="useremail" id="useremail" required>
+                    <label for="useremail" class="input-label">
+                        <span class="material-icons">mail</span>
+                        Email
+                    </label>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="userpass" id="userpass" required>
+                    <label for="userpass" class="input-label">
+                        <span class="material-icons">lock</span>
+                        Senha
+                    </label>
+                </div>
+
+                <a href="#" class="resetpass">Esqueci a senha</a>
+
+                <button type="submit" name="btnLogin" class="btnLogin">
+                    <span class="material-icons">login</span>
+                    Entrar
+                </button><br>
+                <div class="row">
+                    <p class="inter-text">Não tem uma conta?</p> <a href="register.html" class="inter-linktext">Cadastre-se</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <img src="IMG/logo_k.png" alt="Logo da empresa" class="logo-fixa">
+
+    
+    <script src="JS/inputs.js" defer></script>
+    <script src="JS/login.js" defer></script>
+</body>
+</html>
