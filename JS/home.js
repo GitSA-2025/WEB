@@ -13,9 +13,9 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   const user = await res.json();
-  document.getElementById("userName").innerText = user.nome;
+  document.getElementById("userName").innerText = user.name;
   document.getElementById("userCPF").innerText = user.cpf;
-  document.getElementById("userEmail").innerText = user.email;
-  document.getElementById("userPhone").innerText = user.telefone;
-  document.getElementById("userType").innerText = user.tipo;
+  document.getElementById("userEmail").innerText = user.user_email;
+  document.getElementById("userPhone").innerText = user.phone;
+  document.getElementById("userType").innerText = user.type_user;
 });
