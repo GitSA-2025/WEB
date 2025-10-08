@@ -18,7 +18,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   });
 
   if (res.ok) {
-    localStorage.setItem("userEmail", email);
+    localStorage.setItem("user_email", email);
     window.location.href = "2FA.html";
   } else {
     const erro = await res.json();
