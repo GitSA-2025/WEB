@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("token");
   if (!token) return window.location.href = "index.html";
 
-  const res = await fetch("http://localhost:3000/api/conta", {
+  const res = await fetch("https://apiwebmobile-production.up.railway.app/api/conta", {
     headers: { Authorization: `Bearer ${token}` }
   });
 
