@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnWeb) {
     btnWeb.addEventListener("click", async () => {
-      const res = await fetch("http://localhost:3000/api/gerar-qrcode", {
+      const res = await fetch("https://apiwebmobile-production.up.railway.app/api/gerar-qrcode", {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (!res.ok) return alert("Erro ao gerar QR Code.");
