@@ -12,6 +12,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   if (res.ok) {
     const data = await res.json();
     localStorage.setItem("token", data.token);
+    localStorage.setItem("user_email", email);
     window.location.href = "home.html";
   } else {
     alert("Login inválido ou 2FA não verificado.");
