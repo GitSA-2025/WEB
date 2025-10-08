@@ -4,7 +4,7 @@ document.getElementById("verificationForm").addEventListener("submit", async (e)
   const code = Array.from(inputs).map(input => input.value).join("");
   const email = localStorage.getItem("userEmail");
 
-  const res = await fetch("http://localhost:3000/api/verificar-2fa", {
+  const res = await fetch("https://apiwebmobile-production.up.railway.app/api/verificar-2fa", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, codigo: code })
