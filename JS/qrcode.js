@@ -13,48 +13,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const res = await fetch(url, {
-          method: 'POST', // Certifique-se de que a rota da API aceite POST
+          method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           }
         });
 
-        // --- INÍCIO DA VERIFICAÇÃO DETALHADA ---
         const contentType = res.headers.get("content-type");
 
         if (!res.ok) {
           console.error(`Erro HTTP: ${res.status}`);
 
           if (contentType && contentType.includes("application/json")) {
-            // Se a API retornou erro em JSON (ex: { error: "Usuário não encontrado" })
             const errorData = await res.json();
             return alert(`Erro na API (${res.status}): ${errorData.error || errorData.message || "Erro desconhecido."}`);
           } else {
-            // Se a API retornou erro em HTML (o seu caso)
             const errorText = await res.text();
             console.error("Resposta não é JSON:", errorText.substring(0, 100) + "...");
             return alert(`Erro na solicitação. Verifique se a rota ${url} e o método (POST) estão corretos na sua API.`);
           }
         }
-
-        // A requisição foi bem-sucedida (status 200 ou 201)
         if (contentType && contentType.includes("application/json")) {
           const data = await res.json();
 
-          // 2. SOLICITAÇÃO BEM-SUCEDIDA (PENDENTE ou JÁ PENDENTE)
           if (data.status === 'pendente' || data.message.includes('Solicitação feita')) {
-            // Redireciona para a tela de espera para iniciar o polling
             window.location.href = "waiting.html";
           } else {
-            // Outras mensagens de sucesso (se houver)
             alert(data.message);
           }
         } else {
-          // Se o status é 200/201 mas o tipo de conteúdo não é JSON
           return alert("A API retornou sucesso, mas o formato não é JSON. Verifique o `res.json()` na API.");
         }
-        // --- FIM DA VERIFICAÇÃO DETALHADA ---
 
       } catch (error) {
         console.error("Erro na requisição de solicitação:", error);
@@ -93,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
           statusDisplay.innerHTML = `❌ Sua solicitação foi negada.<br>Volte para a <a href="home.html">Home</a> para solicitar novamente.`;
 
         } else if (data.status === 'pendente') {
-          statusDisplay.innerText = "Aguarde a aprovação... .";
+          statusDisplay.innerText = "Por favor, NÂO feche o navegador e aguarde a aprovação... .";
 
         } else {
           clearInterval(pollingInterval);
