@@ -4,35 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/styleForm.css">
+    <link rel="stylesheet" href="CSS/styleQrCode.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <title>Vizualização do QrCode - Crachá On-line</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <title>Visualização do QrCode - Crachá On-line</title>
 </head>
 <body>
     <div class="container">
        <div class="background_form">
-            <h1 class="inter-title">Vizualização do Qr Code</h2>
-            <p class="inter-subtitle">Aproxime o Qr Code ao leitor e aguarde a liberação da sua entrada.</p>
-            <img src="" alt="" class="qrImage" id="qrImage">
+            <h1 class="inter-title">Seu código QR Code Aprovado!</h1>
+            <p class="inter-subtitle" id="qrMessage">Aproxime o Qr Code ao leitor e aguarde a liberação da sua entrada.</p>
+            <img src="" alt="QR Code" class="qrImage" id="qrImage">
+            
+            <div class="button-container" style="margin-top: 20px;">
+                <button type="button" class="btnWhatsApp">
+                    <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+                    Enviar WhatsApp
+                </button>
+                <button type="button" class="btnEmail">
+                    <span class="material-icons" style="font-size: 24px;">
+                        email
+                    </span>
+                    Enviar E-mail
+                </button>
+                <button type="button" class="btnVoltar" onclick="window.location.href='home.html'">
+                    <span class="material-icons" style="font-size: 24px;">
+                        home
+                    </span>
+                    Voltar para Home
+                </button>
+            </div>
+            
         </div>
     </div>
 
     <img src="IMG/logo_k.png" alt="Logo da empresa" class="logo-fixa">
     
-
-    <script>
-        const qrCodeUrl = localStorage.getItem('qrCodeUrl');
-        const qrMessage = localStorage.getItem('qrMessage');
-
-        if (!qrCodeUrl) {
-            document.body.innerHTML = '<p>QR Code não encontrado. Volte e gere novamente.</p>';
-        } else {
-            document.getElementById('qrImage').src = qrCodeUrl;
-            
-        }
-
-        localStorage.removeItem('qrCodeUrl');
-
-    </script>
+    <script src="JS/viewqrcode.js" defer></script>
 </body>
 </html>

@@ -46,6 +46,21 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.btnVoltar{
+    background-color: #27445B;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 button {
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin: 10px;
