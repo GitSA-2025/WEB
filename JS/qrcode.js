@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
           statusDisplay.innerHTML = `❌ Sua solicitação foi negada.<br>Volte para a <a href="home.html">Home</a> para solicitar novamente.`;
 
         } else if (data.status === 'pendente') {
-          statusDisplay.innerText = "Por favor, NÂO feche o navegador e aguarde a aprovação... .";
+          statusDisplay.innerText = "Por favor, NÃO feche o navegador e aguarde a aprovação...";
 
         } else {
           clearInterval(pollingInterval);
