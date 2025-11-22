@@ -64,15 +64,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusDisplay = document.querySelector(".inter-subtitle");
 
     async function verificarStatusQRCode() {
-      // ✅ rota correta
-      const url = `${API_BASE_URL}/gerar-qrcode?email=${encodeURIComponent(user_email)}`;
+
 
       try {
-        const res = await fetch(url, {
-          method: "GET",
+        const res = await fetch(`${API_BASE_URL}/gerar-qrcode`, {
+          method: "POST",
           headers: {
+            "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
-          }
+          },
+          body: JSON.stringify({
+            user_email
+          })
         });
 
         if (!res.ok) {
