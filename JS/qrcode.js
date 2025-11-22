@@ -56,27 +56,32 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==============================
   // 2) POLLING NA waiting.html
   // ==============================
+  // ==============================
+  // 2) POLLING NA waiting.html
+  // ==============================
   if (window.location.pathname.endsWith("waiting.html")) {
     let pollingInterval;
     const statusDisplay = document.querySelector(".inter-subtitle");
 
     async function verificarStatusQRCode() {
-      const url = `${API_BASE_URL}/mobile/app/verSolic?email=${encodeURIComponent(user_email)}`;
+      // ✅ rota correta
+      const url = `${API_BASE_URL}/gerar-qrcode?email=${encodeURIComponent(user_email)}`;
 
       try {
         const res = await fetch(url, {
+          method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`
           }
         });
 
         if (!res.ok) {
+          console.log("Erro HTTP:", res.status);
           statusDisplay.innerText = "Erro ao consultar status...";
           return;
         }
 
         const data = await res.json();
-
         console.log("Status recebido:", data);
 
         if (data.status === "aprovado") {
