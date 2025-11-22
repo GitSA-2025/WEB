@@ -9,8 +9,13 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const res = await fetch(`https://apiwebmobile-production.up.railway.app/api/conta/${encodeURIComponent(user_email)}`, {
-      headers: { Authorization: `Bearer ${token}` }
+    const res = await fetch(`https://api-web-mobile.accesssystemfatec.workers.dev/api/conta`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`, 
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user_email })
     });
 
     if (!res.ok) {

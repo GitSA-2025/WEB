@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnWhats = document.querySelector(".btnWhatsApp");
     const btnEmail = document.querySelector(".btnEmail");
     
-    const API_BASE_URL_LOCAL = "http://localhost:3000/api";
+    const API_BASE_URL_LOCAL = "https://api-web-mobile.accesssystemfatec.workers.dev/api";
 
     if (qrImage) {
         if (qrCodeUrl) {

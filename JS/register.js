@@ -11,7 +11,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
 
   if (senha !== senha2) return alert("As senhas não coincidem!");
 
-  const res = await fetch("https://apiwebmobile-production.up.railway.app/api/cadastrar", {
+  const res = await fetch("https://api-web-mobile.accesssystemfatec.workers.dev/api/cadastrar", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ nome, cpf, email, telefone, senha, tipo })

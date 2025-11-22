@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!token || !user_email) return alert("Você precisa estar logado.");
 
-  const API_BASE_URL = "https://apiwebmobile-production.up.railway.app/api";
+  const API_BASE_URL = "https://api-web-mobile.accesssystemfatec.workers.dev/api";
   const btnSolicitarQR = document.querySelector(".btnSolicitarQR");
 
   if (btnSolicitarQR) {
     btnSolicitarQR.addEventListener("click", async () => {
-      const url = `${API_BASE_URL}/solicitar-qrcode/${encodeURIComponent(user_email)}`;
+      const url = `${API_BASE_URL}/gerar-qrcode`;
 
       try {
         const res = await fetch(url, {
@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
-          }
+          },
+          body: JSON.stringify({ user_email })
         });
 
         const contentType = res.headers.get("content-type");
