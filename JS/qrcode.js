@@ -38,10 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (contentType && contentType.includes("application/json")) {
           const data = await res.json();
 
-          if (data.status === 'pendente' || data.message.includes('Solicitação feita')) {
+          if (data.status === 'pendente') {
+            window.location.href = "waiting.html";
+          } else if (data.message && data.message.includes('Solicitação feita')) {
             window.location.href = "waiting.html";
           } else {
-            alert(data.message);
+            alert(data.message || "Erro desconhecido.");
           }
         } else {
           return alert("A API retornou sucesso, mas o formato não é JSON. Verifique o `res.json()` na API.");
