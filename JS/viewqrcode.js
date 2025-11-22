@@ -6,56 +6,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const qrImage = document.getElementById("qrImage");
-    const qrCodeUrl = localStorage.getItem("qrCodeUrl");
+    const payloadStr = localStorage.getItem("qrCodePayload");
 
-    const btnWhats = document.querySelector(".btnWhatsApp");
-    const btnEmail = document.querySelector(".btnEmail");
-
-    const API_BASE_URL_LOCAL = "https://api-web-mobile.accesssystemfatec.workers.dev/api";
-
-    console.log("QR Code encontrado no localStorage:", qrCodeUrl);
-
-    if (qrImage) {
-        if (qrCodeUrl && qrCodeUrl.startsWith("data:image")) {
-            qrImage.src = qrCodeUrl;
-        } else {
-            document.body.innerHTML = `
+    if (!payloadStr) {
+        document.body.innerHTML = `
             <div class="container"><div class="background_form">
-                <p>QR Code não encontrado ou inválido. Volte e <a href="qrcode.html">gere novamente</a>.</p>
+                <p>QR Code não encontrado. Volte e <a href="qrcode.html">gere novamente</a>.</p>
             </div></div>
         `;
+        return;
+    }
+
+    QRCode.toDataURL(payloadStr, { width: 256, margin: 2 }, (err, url) => {
+        if (err) {
+            console.error("Erro ao gerar QR Code:", err);
+            return;
         }
+        qrImage.src = url;
+    });
 
-        localStorage.removeItem("qrCodeUrl");
-        localStorage.removeItem("qrMessage");
-    }
-
-    if (btnWhats) {
-        btnWhats.addEventListener("click", async () => {
-            const res = await fetch(`${API_BASE_URL_LOCAL}/enviar-qrcode-whatsapp`, {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            });
-
-            if (res.ok) alert("QR Code enviado por WhatsApp com sucesso!");
-            else alert("Erro ao enviar via WhatsApp. Verifique o servidor local.");
-        });
-    }
-
-    if (btnEmail) {
-        btnEmail.addEventListener("click", async () => {
-            const res = await fetch(`${API_BASE_URL_LOCAL}/enviar-qrcode-email`, {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            });
-            if (res.ok) alert("QR Code enviado por e-mail com sucesso!");
-            else alert("Erro ao enviar por e-mail. Verifique o servidor local.");
-        });
-    }
+    // Limpar localStorage
+    localStorage.removeItem("qrCodePayload");
 });
