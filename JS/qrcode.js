@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusDisplay = document.querySelector(".inter-subtitle");
 
     async function verificarStatusQRCode() {
-      const url = `${API_BASE_URL}/gerar-qrcode/${encodeURIComponent(user_email)}`;
+      const url = `${API_BASE_URL}/mobile/app/verSolic?email=${encodeURIComponent(user_email)}`;
 
       try {
         const res = await fetch(url, {
@@ -70,7 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
+        if (!res.ok) {
+          statusDisplay.innerText = "Erro ao consultar status...";
+          return;
+        }
+
         const data = await res.json();
+
+        console.log("Status recebido:", data);
 
         if (data.status === "aprovado") {
           clearInterval(pollingInterval);
@@ -91,13 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
           statusDisplay.innerText = "Aguardando aprovação do porteiro...";
 
         } else {
-          clearInterval(pollingInterval);
-          statusDisplay.innerHTML = `⚠️ Status desconhecido.<br>Volte para a <a href="home.html">Home</a>.`;
+          statusDisplay.innerHTML = `⚠️ Status desconhecido.`;
         }
 
       } catch (error) {
         console.error("Erro no polling:", error);
-        statusDisplay.innerText = "Erro de conexão... tentando novamente";
+        statusDisplay.innerText = "Erro de conexão...";
       }
     }
 
