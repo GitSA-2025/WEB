@@ -7,22 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const qrImage = document.getElementById("qrImage");
     const qrCodeUrl = localStorage.getItem("qrCodeUrl");
-    
+
     const btnWhats = document.querySelector(".btnWhatsApp");
     const btnEmail = document.querySelector(".btnEmail");
-    
+
     const API_BASE_URL_LOCAL = "https://api-web-mobile.accesssystemfatec.workers.dev/api";
 
+    console.log("QR Code encontrado no localStorage:", qrCodeUrl);
+
     if (qrImage) {
-        if (qrCodeUrl) {
+        if (qrCodeUrl && qrCodeUrl.startsWith("data:image")) {
             qrImage.src = qrCodeUrl;
         } else {
-
             document.body.innerHTML = `
-                <div class="container"><div class="background_form">
-                    <p>QR Code não encontrado. Volte e <a href="qrcode.html">gere novamente</a>.</p>
-                </div></div>
-            `;
+            <div class="container"><div class="background_form">
+                <p>QR Code não encontrado ou inválido. Volte e <a href="qrcode.html">gere novamente</a>.</p>
+            </div></div>
+        `;
         }
 
         localStorage.removeItem("qrCodeUrl");
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnWhats.addEventListener("click", async () => {
             const res = await fetch(`${API_BASE_URL_LOCAL}/enviar-qrcode-whatsapp`, {
                 method: "POST",
-                headers: { 
+                headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json"
                 }
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnEmail.addEventListener("click", async () => {
             const res = await fetch(`${API_BASE_URL_LOCAL}/enviar-qrcode-email`, {
                 method: "POST",
-                headers: { 
+                headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json"
                 }
