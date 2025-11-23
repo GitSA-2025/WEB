@@ -15,27 +15,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==============================
   if (btnSolicitarQR) {
     btnSolicitarQR.addEventListener("click", async () => {
-      const url = `${API_BASE_URL}/solicitar-qrcode/${encodeURIComponent(user_email)}`;
       try {
+        // Cria URL com encodeURIComponent para emails
+        const url = `${API_BASE_URL}/solicitar-qrcode/${encodeURIComponent(user_email)}`;
+        console.log("Chamando URL:", url);
+
         const res = await fetch(url, {
           method: "POST",
-          headers: { "Authorization": `Bearer ${token}` }
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+          }
         });
 
         if (!res.ok) {
-          const errorData = await res.json();
-          return alert(`Erro (${res.status}): ${errorData.error || errorData.message}`);
+          const errorData = await res.json().catch(() => ({}));
+          console.error("Erro HTTP:", res.status, errorData);
+          return alert(`Erro (${res.status}): ${errorData.error || "Erro desconhecido"}`);
         }
 
         const data = await res.json();
+        console.log("Resposta da solicitação:", data);
 
         if (data.status === "pendente" || (data.message && data.message.includes("Solicitação"))) {
           window.location.href = "waiting.html";
         } else {
           alert(data.message || "Resposta inesperada da API.");
         }
-      } catch (error) {
-        console.error("Erro na solicitação:", error);
+
+      } catch (err) {
+        console.error("Erro ao solicitar QR Code:", err);
         alert("Erro de comunicação com o servidor.");
       }
     });
@@ -46,49 +55,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==============================
   const statusDisplay = document.querySelector(".inter-subtitle");
   if (statusDisplay) {
-    let pollingInterval;
     console.log("✅ Polling iniciado...");
 
-    async function verificarStatusQRCode() {
-      console.log("🔄 Verificando status do QR Code...");
+    let pollingInterval;
 
+    async function verificarStatusQRCode() {
       try {
-        const res = await fetch(`${API_BASE_URL}/solicitar-qrcode/${encodeURIComponent(user_email)}`, {
-          method: "GET", // apenas verifica status
-          headers: { "Authorization": `Bearer ${token}` }
+        const url = `${API_BASE_URL}/gerar-qrcode?email=${encodeURIComponent(user_email)}`;
+        console.log("Verificando status:", url);
+
+        const res = await fetch(url, {
+          method: "GET", // GET porque na rota atual a API lê query string
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
         });
 
         if (!res.ok) {
-          console.log("❌ Erro HTTP:", res.status);
+          console.error("❌ Erro HTTP:", res.status);
           statusDisplay.innerText = "Erro ao consultar status...";
           return;
         }
 
         const data = await res.json();
-        console.log("✅ Status recebido:", data);
+        console.log("Status recebido:", data);
 
         if (data.status === "aprovado") {
           clearInterval(pollingInterval);
 
-          // ==============================
-          // Gerar QR Code localmente
-          // ==============================
-          const payload = {
-            id_user: data.user.id_user,
-            name: data.user.name,
-            cpf: data.user.cpf,
-            user_email: data.user.user_email,
-            phone: data.user.phone,
-            type_user: data.user.type_user,
-            verify2fa: data.user.verify2fa
-          };
+          if (data.qrCode) {
+            localStorage.setItem("qrCodeUrl", data.qrCode);
+            localStorage.setItem("qrMessage", "QR Code aprovado!");
+            window.location.href = "viewqrcode.html";
+          } else {
+            statusDisplay.innerText = "Erro: QR Code não retornado.";
+          }
 
-          const qrSvg = generateQRCode(payload); // função JS no frontend
-          const qrDataUrl = `data:image/svg+xml;base64,${btoa(qrSvg)}`;
-
-          localStorage.setItem("qrCodeUrl", qrDataUrl);
-          localStorage.setItem("qrMessage", "QR Code aprovado!");
-          window.location.href = "viewqrcode.html";
         } else if (data.status === "negado") {
           clearInterval(pollingInterval);
           statusDisplay.innerHTML = `❌ Solicitação negada.<br>Volte para a <a href="home.html">Home</a>.`;
@@ -97,8 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           statusDisplay.innerHTML = `⚠️ Status desconhecido.`;
         }
-      } catch (error) {
-        console.error("❌ Erro no polling:", error);
+
+      } catch (err) {
+        console.error("❌ Erro no polling:", err);
         statusDisplay.innerText = "Erro de conexão...";
       }
     }
@@ -106,19 +109,5 @@ document.addEventListener("DOMContentLoaded", () => {
     const POLLING_INTERVAL_MS = 5000;
     verificarStatusQRCode();
     pollingInterval = setInterval(verificarStatusQRCode, POLLING_INTERVAL_MS);
-  }
-
-  // ==============================
-  // Função para gerar QR Code no frontend
-  // ==============================
-  function generateQRCode(data) {
-    const json = JSON.stringify(data);
-    const qr = new QRCode({
-      content: json,
-      padding: 2,
-      width: 256,
-      height: 256
-    });
-    return qr.svg();
   }
 });
