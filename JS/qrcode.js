@@ -81,43 +81,39 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Status recebido:", data);
 
 
-          if (data.status === "aprovado") {
-            clearInterval(pollingInterval);
-
-            // Gera o QR Code no front usando a lib
-            const qrImage = document.getElementById("qrImage");
-            if (qrImage) {
-              const payload = JSON.stringify(data.userData);
-              QRCode.toDataURL(payload)
-                .then(url => {
-                  qrImage.src = url;
-                  localStorage.setItem("qrCodeUrl", url);
-                  localStorage.setItem("qrMessage", "QR Code aprovado!");
-                  window.location.href = "viewqrcode.html";
-                })
-                .catch(err => {
-                  console.error("Erro ao gerar QR Code no front:", err);
-                  statusDisplay.innerText = "Erro ao gerar QR Code.";
-                });
-            }
-
-        } else if (data.status === "negado") {
+        if (data.status === "aprovado") {
           clearInterval(pollingInterval);
-          statusDisplay.innerHTML = `❌ Solicitação negada.<br>Volte para a <a href="home.html">Home</a>.`;
-        } else if (data.status === "pendente") {
-          statusDisplay.innerText = "Aguardando aprovação do porteiro...";
-        } else {
-          statusDisplay.innerHTML = `⚠️ Status desconhecido.`;
-        }
 
-      } catch (err) {
-        console.error("❌ Erro no polling:", err);
-        statusDisplay.innerText = "Erro de conexão...";
+          const payload = JSON.stringify(data.userData);
+
+          QRCode.toDataURL(payload)
+            .then(url => {
+              localStorage.setItem("qrCodeUrl", url);
+              localStorage.setItem("qrMessage", "QR Code aprovado!");
+              window.location.href = "viewqrcode.html";
+            })
+            .catch(err => {
+              console.error("Erro ao gerar QR Code:", err);
+              statusDisplay.innerText = "Erro ao gerar QR Code.";
+            });
+            
+      } else if (data.status === "negado") {
+        clearInterval(pollingInterval);
+        statusDisplay.innerHTML = `❌ Solicitação negada.<br>Volte para a <a href="home.html">Home</a>.`;
+      } else if (data.status === "pendente") {
+        statusDisplay.innerText = "Aguardando aprovação do porteiro...";
+      } else {
+        statusDisplay.innerHTML = `⚠️ Status desconhecido.`;
       }
-    }
 
-    const POLLING_INTERVAL_MS = 5000;
-    verificarStatusQRCode();
-    pollingInterval = setInterval(verificarStatusQRCode, POLLING_INTERVAL_MS);
+    } catch (err) {
+      console.error("❌ Erro no polling:", err);
+      statusDisplay.innerText = "Erro de conexão...";
+    }
   }
+
+  const POLLING_INTERVAL_MS = 5000;
+  verificarStatusQRCode();
+  pollingInterval = setInterval(verificarStatusQRCode, POLLING_INTERVAL_MS);
+}
 });
