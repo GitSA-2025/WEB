@@ -1,89 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/styleForm.css">
     <link rel="stylesheet" href="CSS/tooltip.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
     <title>Cadastro - Crachá On-line</title>
 </head>
+
 <body>
     <div class="container">
-       <div class="background_form">
+        <div class="background_form">
             <form action="2FA.html" method="post" id="registerForm">
                 <h1 class="inter-title">Seja bem-vindo ao Crachá On-line!</h2>
-                <p class="inter-subtitle">Realize o seu cadastro como para ter acesso ao seu crachá.</p>
-                
-                <div class="input-group">
-                    <input type="text" name="username" id="username" required>
-                    <label for="username" class="input-label">
-                        <span class="material-icons">person</span>
-                        Nome
-                    </label>
-                </div>
-                <div class="input-group">
-                    <input type="text" name="usercpf" id="usercpf" required>
-                    <label for="usercpf" class="input-label">
-                        <span class="material-icons">badge</span>
-                        CPF
-                    </label>
-                </div>
-                <div class="input-group">
-                    <input type="email" name="useremail" id="useremail" required>
-                    <label for="useremail" class="input-label">
-                        <span class="material-icons">mail</span>
-                        Email
-                    </label>
-                </div>
-                <div class="input-group">
-                    <input type="tel" name="userphone" id="userphone" required>
-                    <label for="useremail" class="input-label" inputmode="tel">
-                        <span class="material-icons">phone</span>
-                        Telefone
-                    </label>
-                </div>
-                <div class="input-group">
-                    <input type="password" name="userpass" id="userpass" required>
-                    <label for="userpass" class="input-label">
-                        <span class="material-icons">lock</span>
-                        Senha
-                    </label>
-                    <div class="tooltip" id="password-tooltip">
-                        <p id="length">• Mínimo de 8 caracteres</p>
-                        <p id="uppercase">• Ao menos 1 letra maiúscula</p>
-                        <p id="lowercase">• Ao menos 1 letra minúscula</p>
-                        <p id="number">• Ao menos 1 número</p>
+                    <p class="inter-subtitle">Realize o seu cadastro como para ter acesso ao seu crachá.</p>
+
+                    <div class="input-group">
+                        <input type="text" name="username" id="username" required>
+                        <label for="username" class="input-label">
+                            <span class="material-icons">person</span>
+                            Nome
+                        </label>
                     </div>
-                </div>
-                <div class="input-group">
-                    <input type="password" name="userpassrep" id="userpassrep" required>
-                    <label for="userpassrep" class="input-label">
-                        <span class="material-icons">lock</span>
-                        Confirme a senha
-                    </label>
-                </div>
+                    <div class="input-group">
+                        <input type="text" id="usercpf" name="usercpf" data-type="cpf" required>
+                        <label for="cpf">
+                            <span class="material-icons">badge</span>
+                            CPF
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="useremail" id="useremail" required>
+                        <label for="useremail" class="input-label">
+                            <span class="material-icons">mail</span>
+                            Email
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" name="userphone" id="userphone" data-type="telefone" required>
+                        <label for="useremail" class="input-label">
+                            <span class="material-icons">phone</span>
+                            Telefone
+                        </label>
+                    </div>
+                    <div style="margin: 10px 0;">
+                        <label style="font-family: 'Roboto Mono', monospace;">
+                            <input type="checkbox" id="temVeiculo">
+                            Possuo veículo
+                        </label>
+                    </div>
 
-                <a href="#" class="resetpass">Esqueci a senha</a>
+                    <div class="input-group" id="placaGroup" style="display: none;">
+                        <input type="text" id="placa" data-type="placa">
+                        <label for="placa">
+                            <span class="material-icons">directions_car</span>
+                            Placa do Veículo
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="userpass" id="userpass" required>
+                        <label for="userpass" class="input-label">
+                            <span class="material-icons">lock</span>
+                            Senha
+                        </label>
+                        <div class="tooltip" id="password-tooltip">
+                            <p id="length">• Mínimo de 8 caracteres</p>
+                            <p id="uppercase">• Ao menos 1 letra maiúscula</p>
+                            <p id="lowercase">• Ao menos 1 letra minúscula</p>
+                            <p id="number">• Ao menos 1 número</p>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="userpassrep" id="userpassrep" required>
+                        <label for="userpassrep" class="input-label">
+                            <span class="material-icons">lock</span>
+                            Confirme a senha
+                        </label>
+                    </div>
 
-                <button type="submit" name="btnLogin" class="btnLogin">
-                    <span class="material-icons">login</span>
-                    Cadastrar
-                </button><br>
-                <div class="row">
-                    <p class="inter-text">Já possui uma conta?</p> <a href="index.html" class="inter-linktext">Faça o login.</a>
-                </div>
+                    <div style="margin: 15px 0; font-family: 'Roboto Mono', monospace;">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="aceitarTermos">
+                            Li e aceito os <a href="#" target="_blank">Termos de Uso</a> e a
+                            <a href="#" target="_blank">Política de Privacidade</a>
+                        </label>
+                        <small id="termosErro" style="color: red; display: none;">
+                            Você precisa aceitar os termos para continuar.
+                        </small>
+                    </div>
+
+
+                    <button type="submit" name="btnLogin" class="btnLogin">
+                        <span class="material-icons">login</span>
+                        Cadastrar
+                    </button><br>
+                    <div class="row">
+                        <p class="inter-text">Já possui uma conta?</p> <a href="index.html" class="inter-linktext">Faça
+                            o login.</a>
+                    </div>
             </form>
         </div>
     </div>
 
     <img src="IMG/logo_k.png" alt="Logo da empresa" class="logo-fixa">
 
-    
+
     <script src="JS/inputs.js" defer></script>
-    <script src="JS/mask-tel.js" defer></script>
     <script src="JS/password.js" defer></script>
     <script src="JS/register.js" defer></script>
 </body>
+
 </html>
