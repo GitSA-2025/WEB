@@ -13,9 +13,10 @@
 
 <body>
     <div class="container">
+
         <div class="background_form">
             <form action="2FA.html" method="post" id="registerForm">
-                <h1 class="inter-title">Seja bem-vindo ao Crachá On-line!</h2>
+                <h1 class="inter-title">Seja bem-vindo ao Crachá Online!</h2>
                     <p class="inter-subtitle">Realize o seu cadastro como para ter acesso ao seu crachá.</p>
 
                     <div class="input-group">
@@ -26,8 +27,8 @@
                         </label>
                     </div>
                     <div class="input-group">
-                        <input type="text" id="usercpf" name="usercpf" data-type="cpf" required>
-                        <label for="cpf">
+                        <input type="text" name="usercpf" id="usercpf" required>
+                        <label for="usercpf" class="input-label">
                             <span class="material-icons">badge</span>
                             CPF
                         </label>
@@ -40,26 +41,28 @@
                         </label>
                     </div>
                     <div class="input-group">
-                        <input type="tel" name="userphone" id="userphone" data-type="telefone" required>
-                        <label for="useremail" class="input-label">
+                        <input type="tel" name="userphone" id="userphone" required>
+                        <label for="useremail" class="input-label" inputmode="tel">
                             <span class="material-icons">phone</span>
                             Telefone
                         </label>
                     </div>
+
                     <div style="margin: 10px 0;">
-                        <label style="font-family: 'Roboto Mono', monospace;">
-                            <input type="checkbox" id="temVeiculo">
+                        <label class="input-label">
+                            <input type="checkbox" id="temVeiculo" class="input-label">
                             Possuo veículo
                         </label>
                     </div>
 
                     <div class="input-group" id="placaGroup" style="display: none;">
                         <input type="text" id="placa" data-type="placa">
-                        <label for="placa">
+                        <label for="placa" class="input-label">
                             <span class="material-icons">directions_car</span>
                             Placa do Veículo
                         </label>
                     </div>
+
                     <div class="input-group">
                         <input type="password" name="userpass" id="userpass" required>
                         <label for="userpass" class="input-label">
@@ -82,7 +85,7 @@
                     </div>
 
                     <div style="margin: 15px 0; font-family: 'Roboto Mono', monospace;">
-                        <label style="display: flex; align-items: center; gap: 8px;">
+                        <label class="input-label">
                             <input type="checkbox" id="aceitarTermos">
                             Li e aceito os <a href="#" target="_blank">Termos de Uso</a> e a
                             <a href="#" target="_blank">Política de Privacidade</a>
@@ -91,7 +94,6 @@
                             Você precisa aceitar os termos para continuar.
                         </small>
                     </div>
-
 
                     <button type="submit" name="btnLogin" class="btnLogin">
                         <span class="material-icons">login</span>
@@ -105,12 +107,13 @@
         </div>
     </div>
 
-    <img src="IMG/logo_k.png" alt="Logo da empresa" class="logo-fixa">
+    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
 
 
     <script src="JS/inputs.js" defer></script>
     <script src="JS/password.js" defer></script>
     <script src="JS/register.js" defer></script>
+    <script src="JS/scroll.js" defer></script>
 </body>
 
 </html>

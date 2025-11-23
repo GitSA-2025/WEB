@@ -1,7 +1,7 @@
 .btnWeb {
     background-color: #3788A6;
     color: #fff;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", serif;
     font-weight: 600;
     font-size: 16px;
     padding: 10px 20px;
@@ -17,7 +17,7 @@
 .btnWhatsApp {
     background-color: #25D366;
     color: #fff;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 16px;
     padding: 10px 20px;
@@ -33,7 +33,7 @@
 .btnEmail {
     background-color: #8E2927;
     color: #fff;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 16px;
     padding: 10px 20px;
@@ -49,7 +49,7 @@
 .btnVoltar {
     background-color: #27445B;
     color: #fff;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 16px;
     padding: 10px 20px;
@@ -65,7 +65,7 @@
 .btnSolicitarQR {
     background-color: #27445B;
     color: #fff;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 16px;
     padding: 10px 20px;

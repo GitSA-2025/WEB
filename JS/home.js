@@ -32,6 +32,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("userEmail").innerText = user.user_email || user.email || "";
     document.getElementById("userPhone").innerText = user.phone || user.telefone || "";
     document.getElementById("userType").innerText = user.type_user || user.tipo || "";
+    document.getElementById("plate").innerText = user.plate || user.placa || "";
   } catch (err) {
     console.error("Erro na requisição para /conta:", err);
     alert("Erro ao carregar dados. Verifique a conexão.");

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styleForm.css">
+    <link rel="stylesheet" href="CSS/tooltip.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Editar Perfil - Crachá On-line</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="background_form">
+            <form action="home.html" method="post" id="registerForm">
+                <h1 class="inter-title">Edição de perfil</h2>
+                    <p class="inter-subtitle">Sinta-se a vontade para alterar os seus dados.</p>
+
+                    <div class="input-group">
+                        <input type="text" name="username" id="username" required>
+                        <label for="username" class="input-label">
+                            <span class="material-icons">person</span>
+                            Nome
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="usercpf" id="usercpf" required>
+                        <label for="usercpf" class="input-label">
+                            <span class="material-icons">badge</span>
+                            CPF
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" name="userphone" id="userphone" required>
+                        <label for="useremail" class="input-label" inputmode="tel">
+                            <span class="material-icons">phone</span>
+                            Telefone
+                        </label>
+                    </div>
+
+                    <div style="margin: 10px 0;">
+                        <label class="input-label" style="color: white;">
+                            <input type="checkbox" id="temVeiculo" class="input-label">
+                            Possuo veículo
+                        </label>
+                    </div>
+
+                    <div class="input-group" id="placaGroup" style="display: none;">
+                        <input type="text" id="placa" data-type="placa">
+                        <label for="placa" class="input-label">
+                            <span class="material-icons">directions_car</span>
+                            Placa do Veículo
+                        </label>
+                    </div>
+
+                    <button type="submit" name="btnLogin" class="btnLogin">
+                        <span class="material-icons">save</span>
+                        Salvar alterações
+                    </button><br>
+            </form>
+        </div>
+    </div>
+
+    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
+
+    <script src="JS/inputs.js" defer></script>
+    <script src="JS/viewConta.js" defer></script>
+    <script src="JS/editProfile.js" defer></script>
+    <script src="JS/scroll.js" defer></script>
+</body>
+
+</html>
