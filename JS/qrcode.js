@@ -61,14 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function verificarStatusQRCode() {
       try {
-        const url = `${API_BASE_URL}/gerar-qrcode?email=${encodeURIComponent(user_email)}`;
-        console.log("Verificando status:", url);
-
+        const url = `${API_BASE_URL}/gerar-qrcode`;
         const res = await fetch(url, {
-          method: "GET", // GET porque na rota atual a API lê query string
+          method: "POST",
           headers: {
+            "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
-          }
+          },
+          body: JSON.stringify({ user_email })
         });
 
         if (!res.ok) {
