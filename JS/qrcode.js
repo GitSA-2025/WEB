@@ -80,16 +80,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await res.json();
         console.log("Status recebido:", data);
 
-        if (data.status === "aprovado") {
-          clearInterval(pollingInterval);
 
-          if (data.qrCode) {
-            localStorage.setItem("qrCodeUrl", data.qrCode);
-            localStorage.setItem("qrMessage", "QR Code aprovado!");
-            window.location.href = "viewqrcode.html";
-          } else {
-            statusDisplay.innerText = "Erro: QR Code não retornado.";
-          }
+          if (data.status === "aprovado") {
+            clearInterval(pollingInterval);
+
+            // Gera o QR Code no front usando a lib
+            const qrImage = document.getElementById("qrImage");
+            if (qrImage) {
+              const payload = JSON.stringify(data.userData);
+              QRCode.toDataURL(payload)
+                .then(url => {
+                  qrImage.src = url;
+                  localStorage.setItem("qrCodeUrl", url);
+                  localStorage.setItem("qrMessage", "QR Code aprovado!");
+                  window.location.href = "viewqrcode.html";
+                })
+                .catch(err => {
+                  console.error("Erro ao gerar QR Code no front:", err);
+                  statusDisplay.innerText = "Erro ao gerar QR Code.";
+                });
+            }
 
         } else if (data.status === "negado") {
           clearInterval(pollingInterval);
