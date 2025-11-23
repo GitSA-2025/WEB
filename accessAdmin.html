@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styleForm.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <title>Acesso Restrito - Crachá On-line</title>
+</head>
+<body>
+    <div class="container">
+       <div class="background_form">
+            <form action="" method="post" id="loginForm">
+                <h1 class="inter-title">Seja bem-vindo ao Crachá Online!</h2>
+                <p class="inter-subtitle">Insira a senha para acessar a área restrita.</p>
+                
+                <div class="input-group">
+                    <input type="password" name="userpass" id="userpass" required>
+                    <label for="userpass" class="input-label">
+                        <span class="material-icons">lock</span>
+                        Senha
+                    </label>
+                </div>
+
+                <button type="submit" name="btnLogin" class="btnLogin">
+                    Entrar
+                    <span class="material-icons">login</span>
+                </button><br>
+            </form>
+        </div>
+    </div>
+
+    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
+
+    <script src="JS/passAdmin.js" defer></script>
+    <script src="JS/inputs.js" defer></script>
+    <script src="JS/scroll.js" defer></script>
+</body>
+</html>

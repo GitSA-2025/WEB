@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="CSS/tooltip.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <title>Cadastro - Crachá On-line</title>
+    <title>Cadastro - Colaborador - Crachá On-line</title>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
                         </label>
                     </div>
                     <div class="input-group">
-                        <input type="text" name="usercpf" id="usercpf" required>
+                        <input type="text" name="usercpf" id="usercpf" data-type="cpf" required>
                         <label for="usercpf" class="input-label">
                             <span class="material-icons">badge</span>
                             CPF
@@ -41,7 +41,7 @@
                         </label>
                     </div>
                     <div class="input-group">
-                        <input type="tel" name="userphone" id="userphone" required>
+                        <input type="tel" name="userphone" id="userphone" data-type="telefone" required>
                         <label for="useremail" class="input-label" inputmode="tel">
                             <span class="material-icons">phone</span>
                             Telefone
@@ -99,10 +99,6 @@
                         <span class="material-icons">login</span>
                         Cadastrar
                     </button><br>
-                    <div class="row">
-                        <p class="inter-text">Já possui uma conta?</p> <a href="index.html" class="inter-linktext">Faça
-                            o login.</a>
-                    </div>
             </form>
         </div>
     </div>
@@ -112,7 +108,7 @@
 
     <script src="JS/inputs.js" defer></script>
     <script src="JS/password.js" defer></script>
-    <script src="JS/register.js" defer></script>
+    <script src="JS/registerColab.js" defer></script>
     <script src="JS/scroll.js" defer></script>
 </body>
 
