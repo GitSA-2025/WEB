@@ -2,118 +2,103 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
   const user_email = localStorage.getItem("user_email");
 
-  if (!token || !user_email) {
-    alert("Você precisa estar logado.");
-    return window.location.href = "index.html";
-  }
+  if (!token || !user_email) return alert("Você precisa estar logado.");
 
-  const API_BASE_URL = "https://api-web-mobile.accesssystemfatec.workers.dev/api";
+  const API_BASE_URL = "https://apiwebmobile-production.up.railway.app/api";
   const btnSolicitarQR = document.querySelector(".btnSolicitarQR");
 
-  // ==============================
-  // 1) SOLICITAR QRCODE
-  // ==============================
   if (btnSolicitarQR) {
     btnSolicitarQR.addEventListener("click", async () => {
-      try {
-        // Cria URL com encodeURIComponent para emails
-        const url = `${API_BASE_URL}/solicitar-qrcode/${encodeURIComponent(user_email)}`;
-        console.log("Chamando URL:", url);
+      const url = `${API_BASE_URL}/solicitar-qrcode/${encodeURIComponent(user_email)}`;
 
+      try {
         const res = await fetch(url, {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json"
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
         });
 
+        const contentType = res.headers.get("content-type");
+
         if (!res.ok) {
-          const errorData = await res.json().catch(() => ({}));
-          console.error("Erro HTTP:", res.status, errorData);
-          return alert(`Erro (${res.status}): ${errorData.error || "Erro desconhecido"}`);
+          console.error(`Erro HTTP: ${res.status}`);
+
+          if (contentType && contentType.includes("application/json")) {
+            const errorData = await res.json();
+            return alert(`Erro na API (${res.status}): ${errorData.error || errorData.message || "Erro desconhecido."}`);
+          } else {
+            const errorText = await res.text();
+            console.error("Resposta não é JSON:", errorText.substring(0, 100) + "...");
+            return alert(`Erro na solicitação. Verifique se a rota ${url} e o método (POST) estão corretos na sua API.`);
+          }
         }
+        if (contentType && contentType.includes("application/json")) {
+          const data = await res.json();
 
-        const data = await res.json();
-        console.log("Resposta da solicitação:", data);
-
-        if (data.status === "pendente" || (data.message && data.message.includes("Solicitação"))) {
-          window.location.href = "waiting.html";
+          if (data.status === 'pendente' || data.message.includes('Solicitação feita')) {
+            window.location.href = "waiting.html";
+          } else {
+            alert(data.message);
+          }
         } else {
-          alert(data.message || "Resposta inesperada da API.");
+          return alert("A API retornou sucesso, mas o formato não é JSON. Verifique o `res.json()` na API.");
         }
 
-      } catch (err) {
-        console.error("Erro ao solicitar QR Code:", err);
-        alert("Erro de comunicação com o servidor.");
+      } catch (error) {
+        console.error("Erro na requisição de solicitação:", error);
+        alert("Erro de comunicação com a API. Verifique sua conexão ou a URL.");
       }
     });
   }
 
-  // ==============================
-  // 2) POLLING NA waiting.html
-  // ==============================
-  const statusDisplay = document.querySelector(".inter-subtitle");
-  if (statusDisplay) {
-    console.log("✅ Polling iniciado...");
-
+  if (window.location.pathname.endsWith('waiting.html')) {
     let pollingInterval;
+    const statusDisplay = document.querySelector(".inter-subtitle");
 
     async function verificarStatusQRCode() {
+      const url = `${API_BASE_URL}/gerar-qrcode/${encodeURIComponent(user_email)}`;
+
       try {
-        const url = `${API_BASE_URL}/gerar-qrcode`;
         const res = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ user_email })
+          headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        if (!res.ok) {
-          console.error("❌ Erro HTTP:", res.status);
-          statusDisplay.innerText = "Erro ao consultar status...";
-          return;
-        }
-
         const data = await res.json();
-        console.log("Status recebido:", data);
 
-
-        if (data.status === "aprovado") {
+        if (data.status === 'aprovado') {
           clearInterval(pollingInterval);
 
-          const payload = JSON.stringify(data.userData);
+          if (data.qrCode) {
+            localStorage.setItem("qrCodeUrl", data.qrCode);
+            localStorage.setItem("qrMessage", "QR Code aprovado e gerado!");
+            window.location.href = "viewqrcode.html";
+          } else {
+            statusDisplay.innerText = "Erro: QR Code não retornado após aprovação.";
+          }
 
-          QRCode.toDataURL(payload)
-            .then(url => {
-              localStorage.setItem("qrCodeUrl", url);
-              localStorage.setItem("qrMessage", "QR Code aprovado!");
-              window.location.href = "viewqrcode.html";
-            })
-            .catch(err => {
-              console.error("Erro ao gerar QR Code:", err);
-              statusDisplay.innerText = "Erro ao gerar QR Code.";
-            });
-            
-      } else if (data.status === "negado") {
-        clearInterval(pollingInterval);
-        statusDisplay.innerHTML = `❌ Solicitação negada.<br>Volte para a <a href="home.html">Home</a>.`;
-      } else if (data.status === "pendente") {
-        statusDisplay.innerText = "Aguardando aprovação do porteiro...";
-      } else {
-        statusDisplay.innerHTML = `⚠️ Status desconhecido.`;
+        } else if (data.status === 'negado') {
+          clearInterval(pollingInterval);
+          statusDisplay.innerHTML = `❌ Sua solicitação foi negada.<br>Volte para a <a href="home.html">Home</a> para solicitar novamente.`;
+
+        } else if (data.status === 'pendente') {
+          statusDisplay.innerText = "Por favor, NÃO feche o navegador e aguarde a aprovação...";
+
+        } else {
+          clearInterval(pollingInterval);
+          statusDisplay.innerHTML = `⚠️ Erro na verificação: ${data.error || 'Status desconhecido.'}<br>Volte para a <a href="home.html">Home</a>.`;
+        }
+
+      } catch (error) {
+        console.error("Erro no polling de status:", error);
+        statusDisplay.innerText = "Aguarde a aprovação... (Erro de conexão, tentando novamente)";
       }
-
-    } catch (err) {
-      console.error("❌ Erro no polling:", err);
-      statusDisplay.innerText = "Erro de conexão...";
     }
+
+    const POLLING_INTERVAL_MS = 5000;
+    verificarStatusQRCode();
+    pollingInterval = setInterval(verificarStatusQRCode, POLLING_INTERVAL_MS);
   }
 
-  const POLLING_INTERVAL_MS = 5000;
-  verificarStatusQRCode();
-  pollingInterval = setInterval(verificarStatusQRCode, POLLING_INTERVAL_MS);
-}
 });

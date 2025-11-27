@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 /* ---------------------- */
 /* ESTILOS GERAIS         */
@@ -108,6 +108,7 @@ body {
   align-items: center;
 }
 
+
 /* ---------------------- */
 /* INPUTS                 */
 /* ---------------------- */
@@ -175,6 +176,7 @@ body {
   color: #27445B;
 }
 
+
 /* ---------------------- */
 /* BOTÃO LOGIN            */
 /* ---------------------- */
@@ -202,9 +204,6 @@ body {
   background: #6a2e30;
 }
 
-.btnLogin .material-icons {
-  margin-right: 8px;
-}
 
 /* ---------------------- */
 /* FOTO FIXA LOGO         */
@@ -224,14 +223,6 @@ body {
   opacity: 0.9;
 }
 
-@media (max-width: 600px) {
-  .logo-fixa {
-    width: 70px;       
-    bottom: 15px;
-    right: 15px;
-    opacity: 0.6;       
-  }
-}
 
 /* ---------------------- */
 /* LOADING ANIMATION      */
@@ -240,9 +231,7 @@ body {
 .loader {
   width: 50px;
   aspect-ratio: 1;
-  margin: 20px;
   position: absolute;
-  margin: auto;
   left: 44%;
   bottom: 25px;
   transform: translateX(-50%);
@@ -308,19 +297,4 @@ body {
   .inter-subtitle { font-size: 15px; }
   .btnLogin { font-size: 15px; height: 42px; }
   .logo-fixa { width: 80px; }
-}
-
-/* ---------------------- */
-/* Erros         */
-/* ---------------------- */
-
-.error-text {
-  color: red;
-  font-size: 12px;
-  margin-top: 10px;
-  margin-left: 10px;
-  font-family: "Roboto Mono", monospace;
-  background-color: #e0e0e0;
-  padding: 5px;
-  border-radius: 6px;
 }

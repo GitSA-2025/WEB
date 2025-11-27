@@ -1,19 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 .tooltip {
-    display: none;
-    position: absolute;
-    top: -10px;
-    right: -220px;
-    width: 200px;
-    background: #1c1c1c;
-    color: #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 13px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 10;
+  display: none;
+  position: absolute;
+  top: -10px;
+  right: -220px;
+  width: 200px;
+  background: #1c1c1c;
+  color: #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 13px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 10;
 }
+
+/* mobile */
+@media screen and (max-width: 600px) {
+  .tooltip {
+    bottom: 110%;     
+    top: auto;        
+    left: 0;          
+    right: auto;
+    width: 100%;      
+    max-width: 280px; 
+    margin-bottom: 8px; 
+  }
+}
+
+.input-group {
+  position: relative;
+}
+
 
 .tooltip p {
     font-family: "Inter", sans-serif;
@@ -30,10 +48,3 @@
     color: #f44336;
 }
 
-@media screen and (max-width: 500px) {
-  .tooltip {
-    top: 70px;
-    right: auto;
-    left: 0;
-  }
-}

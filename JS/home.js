@@ -9,13 +9,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const res = await fetch(`https://api-web-mobile.accesssystemfatec.workers.dev/api/conta`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`, 
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ user_email })
+    const res = await fetch(`https://apiwebmobile-production.up.railway.app/api/conta/${encodeURIComponent(user_email)}`, {
+      headers: { Authorization: `Bearer ${token}` }
     });
 
     if (!res.ok) {
@@ -32,7 +27,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("userEmail").innerText = user.user_email || user.email || "";
     document.getElementById("userPhone").innerText = user.phone || user.telefone || "";
     document.getElementById("userType").innerText = user.type_user || user.tipo || "";
-    document.getElementById("plate").innerText = user.plate || user.placa || "";
   } catch (err) {
     console.error("Erro na requisição para /conta:", err);
     alert("Erro ao carregar dados. Verifique a conexão.");
