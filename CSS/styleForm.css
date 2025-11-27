@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 /* ---------------------- */
 /* ESTILOS GERAIS         */
@@ -108,7 +108,6 @@ body {
   align-items: center;
 }
 
-
 /* ---------------------- */
 /* INPUTS                 */
 /* ---------------------- */
@@ -176,7 +175,6 @@ body {
   color: #27445B;
 }
 
-
 /* ---------------------- */
 /* BOTÃO LOGIN            */
 /* ---------------------- */
@@ -204,6 +202,9 @@ body {
   background: #6a2e30;
 }
 
+.btnLogin .material-icons {
+  margin-right: 8px;
+}
 
 /* ---------------------- */
 /* FOTO FIXA LOGO         */
@@ -223,6 +224,14 @@ body {
   opacity: 0.9;
 }
 
+@media (max-width: 600px) {
+  .logo-fixa {
+    width: 70px;       
+    bottom: 15px;
+    right: 15px;
+    opacity: 0.6;       
+  }
+}
 
 /* ---------------------- */
 /* LOADING ANIMATION      */
@@ -231,7 +240,9 @@ body {
 .loader {
   width: 50px;
   aspect-ratio: 1;
+  margin: 20px;
   position: absolute;
+  margin: auto;
   left: 44%;
   bottom: 25px;
   transform: translateX(-50%);
@@ -297,4 +308,99 @@ body {
   .inter-subtitle { font-size: 15px; }
   .btnLogin { font-size: 15px; height: 42px; }
   .logo-fixa { width: 80px; }
+}
+
+/* ---------------------- */
+/* Erros         */
+/* ---------------------- */
+
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-family: "Roboto Mono", monospace;
+  background-color: #e0e0e0;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+
+
+/* ---------------------- */
+/* CHECKBOX CUSTOMIZADO   */
+/* ---------------------- */
+
+/* Contêiner dos checkboxes para alinhar o label e o input */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre checkbox e label */
+  margin: 10px 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Esconde o checkbox padrão do navegador */
+.checkbox-group input[type="checkbox"] {
+  display: none;
+}
+
+/* Label do checkbox, usado para criar o quadradinho customizado */
+.checkbox-group label {
+  position: relative;
+  padding-left: 30px; /* Espaço para o quadradinho */
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Quadradinho customizado */
+.checkbox-group label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #27445B;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Quadradinho marcado */
+.checkbox-group input[type="checkbox"]:checked + label::before {
+  background-color: #0E6B4B; /* Verde do site */
+  border-color: #0E6B4B;
+}
+
+/* Pequeno check interno */
+.checkbox-group input[type="checkbox"]:checked + label::after {
+  content: "✔";
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Links dentro do label (termos de uso) */
+.checkbox-group label a {
+  color: #f44336;
+  text-decoration: none;
+}
+
+.checkbox-group label a:hover {
+  text-decoration: underline;
+}
+
+/* Mensagem de erro abaixo do checkbox */
+.checkbox-group small {
+  display: none; /* Pode ser exibido via JS quando houver erro */
+  color: #f44336;
+  margin-left: 30px;
+  font-size: 12px;
 }

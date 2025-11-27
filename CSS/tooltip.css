@@ -1,50 +1,59 @@
+/* ------------------------- */
+/* IMPORTAÇÃO DE FONTES      */
+/* ------------------------- */
+
+/* Fonte Inter do Google Fonts para uso em tooltips */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+
+/* ------------------------- */
+/* TOOLTIP                   */
+/* ------------------------- */
+
+/* Estilo geral do tooltip (mensagem de ajuda ou validação) */
 .tooltip {
-  display: none;
-  position: absolute;
-  top: -10px;
-  right: -220px;
-  width: 200px;
-  background: #1c1c1c;
-  color: #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 13px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  z-index: 10;
+    display: none; /* Inicialmente oculto */
+    position: absolute; /* Posicionamento absoluto em relação ao elemento pai */
+    top: -10px; /* Posição vertical */
+    right: -220px; /* Posição horizontal */
+    width: 200px; /* Largura do tooltip */
+    background: #1c1c1c; /* Fundo escuro */
+    color: #ccc; /* Cor do texto */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 13px; /* Tamanho da fonte */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    z-index: 10; /* Fica acima de outros elementos */
 }
 
-/* mobile */
-@media screen and (max-width: 600px) {
+/* Estilo do texto dentro do tooltip */
+.tooltip p {
+    font-family: "Inter", sans-serif; /* Fonte Inter */
+    font-weight: 300; /* Peso leve */
+    margin: 5px 0; /* Margem entre linhas */
+    transition: 0.3s; /* Transição suave */
+}
+
+/* Texto que indica validação positiva */
+.tooltip .valid {
+    color: #4caf50; /* Verde */
+}
+
+/* Texto que indica validação negativa */
+.tooltip .invalid {
+    color: #f44336; /* Vermelho */
+}
+
+
+/* ------------------------- */
+/* RESPONSIVIDADE            */
+/* ------------------------- */
+
+/* Ajustes do tooltip em telas menores (mobile) */
+@media screen and (max-width: 500px) {
   .tooltip {
-    bottom: 110%;     
-    top: auto;        
-    left: 0;          
-    right: auto;
-    width: 100%;      
-    max-width: 280px; 
-    margin-bottom: 8px; 
+    top: 70px; /* Reposiciona verticalmente */
+    right: auto; /* Remove alinhamento à direita */
+    left: 0; /* Alinha à esquerda */
   }
 }
-
-.input-group {
-  position: relative;
-}
-
-
-.tooltip p {
-    font-family: "Inter", sans-serif;
-    font-weight: 300;
-    margin: 5px 0;
-    transition: 0.3s;
-}
-
-.tooltip .valid {
-    color: #4caf50;
-}
-
-.tooltip .invalid {
-    color: #f44336;
-}
-

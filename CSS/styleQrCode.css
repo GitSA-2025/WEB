@@ -1,3 +1,8 @@
+/* ------------------------- */
+/* BOTÕES PRINCIPAIS         */
+/* ------------------------- */
+
+/* Botão para acesso ao site ou plataforma web */
 .btnWeb {
     background-color: #3788A6;
     color: #fff;
@@ -14,6 +19,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Botão para iniciar contato via WhatsApp */
 .btnWhatsApp {
     background-color: #25D366;
     color: #fff;
@@ -30,6 +36,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Botão para enviar ou abrir e-mail */
 .btnEmail {
     background-color: #8E2927;
     color: #fff;
@@ -46,6 +53,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Botão de navegação para voltar à página anterior */
 .btnVoltar {
     background-color: #27445B;
     color: #fff;
@@ -62,6 +70,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Botão para solicitar geração de QR Code */
 .btnSolicitarQR {
     background-color: #27445B;
     color: #fff;
@@ -78,6 +87,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+
+/* ------------------------- */
+/* ESTILOS GERAIS PARA BOTÃO */
+/* ------------------------- */
+
 button {
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin: 10px;
@@ -89,10 +103,16 @@ button {
     justify-content: center;
 }
 
+/* Efeito de hover em qualquer botão */
 button:hover {
     transform: scale(1.03);
     filter: brightness(1.1);
 }
+
+
+/* ------------------------- */
+/* CONTÊINER DOS BOTÕES      */
+/* ------------------------- */
 
 .button-container {
     align-items: center;

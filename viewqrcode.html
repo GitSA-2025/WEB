@@ -1,31 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+    <!-- Define a codificação de caracteres -->
     <meta charset="UTF-8">
+    <!-- Responsividade em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS principal de formulários -->
     <link rel="stylesheet" href="CSS/styleForm.css">
+    <!-- CSS específico para QR Code -->
     <link rel="stylesheet" href="CSS/styleQrCode.css">
+
+    <!-- Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <title>Visualização do QrCode - Crachá On-line</title>
+    <!-- Font Awesome para ícone do WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Título da página -->
+    <title>Visualização do QR Code - Crachá On-line</title>
 </head>
+
 <body>
+    <!-- ---------------------- -->
+    <!-- CONTÊINER PRINCIPAL    -->
+    <!-- ---------------------- -->
     <div class="container">
-       <div class="background_form">
+        <div class="background_form">
+
+            <!-- Título -->
             <h1 class="inter-title">Seu código QR Code Aprovado!</h1>
-            <p class="inter-subtitle" id="qrMessage">Aproxime o Qr Code ao leitor e aguarde a liberação da sua entrada.</p>
+            <!-- Mensagem dinâmica -->
+            <p class="inter-subtitle" id="qrMessage">
+                Aproxime o Qr Code ao leitor e aguarde a liberação da sua entrada.
+            </p>
+
+            <!-- Imagem do QR Code (será gerada via JS) -->
             <img src="" alt="QR Code" class="qrImage" id="qrImage">
-            
+
+            <!-- ---------------------- -->
+            <!-- BOTÕES DE AÇÃO        -->
+            <!-- ---------------------- -->
             <div class="button-container" style="margin-top: 20px;">
+                <!-- Enviar QR Code via WhatsApp -->
                 <button type="button" class="btnWhatsApp">
                     <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
                     Enviar WhatsApp
                 </button>
+
+                <!-- Enviar QR Code via E-mail -->
                 <button type="button" class="btnEmail">
                     <span class="material-icons" style="font-size: 24px;">
                         email
                     </span>
                     Enviar E-mail
                 </button>
+
+                <!-- Voltar para a Home -->
                 <button type="button" class="btnVoltar" onclick="window.location.href='home.html'">
                     <span class="material-icons" style="font-size: 24px;">
                         home
@@ -33,12 +64,19 @@
                     Voltar para Home
                 </button>
             </div>
-            
         </div>
     </div>
 
+    <!-- LOGO FIXA -->
     <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
-    
+
+    <!-- ---------------------- -->
+    <!-- SCRIPTS JAVASCRIPT    -->
+    <!-- ---------------------- -->
+    <!-- Script para exibir QR Code e manipular botões -->
     <script src="JS/viewqrcode.js" defer></script>
+    <!-- Biblioteca QRCode.js para gerar o QR Code -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
 </body>
 </html>

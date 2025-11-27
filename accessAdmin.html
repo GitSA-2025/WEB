@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Define a codificação de caracteres -->
     <meta charset="UTF-8">
+    <!-- Responsividade em diferentes dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS principal dos formulários -->
     <link rel="stylesheet" href="CSS/styleForm.css">
+    <!-- Ícones do Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
+    <!-- Título da página -->
     <title>Acesso Restrito - Crachá On-line</title>
 </head>
 <body>
+    <!-- ---------------------- -->
+    <!-- CONTÊINER CENTRAL      -->
+    <!-- ---------------------- -->
     <div class="container">
        <div class="background_form">
+
+            <!-- Formulário de login para área restrita -->
             <form action="" method="post" id="loginForm">
-                <h1 class="inter-title">Seja bem-vindo ao Crachá Online!</h2>
-                <p class="inter-subtitle">Insira a senha para acessar a área restrita.</p>
+
+                <!-- Título da página -->
+                <h1 class="inter-title">Seja bem-vindo ao Crachá Online!</h1>
+                <!-- Subtítulo explicando que é necessário senha -->
+                <p class="inter-subtitle">
+                    Insira a senha para acessar a área restrita.
+                </p>
                 
+                <!-- ---------------------- -->
+                <!-- INPUT DE SENHA          -->
+                <!-- ---------------------- -->
                 <div class="input-group">
                     <input type="password" name="userpass" id="userpass" required>
                     <label for="userpass" class="input-label">
@@ -23,6 +42,9 @@
                     </label>
                 </div>
 
+                <!-- ---------------------- -->
+                <!-- BOTÃO DE LOGIN          -->
+                <!-- ---------------------- -->
                 <button type="submit" name="btnLogin" class="btnLogin">
                     Entrar
                     <span class="material-icons">login</span>
@@ -31,10 +53,19 @@
         </div>
     </div>
 
+    <!-- ---------------------- -->
+    <!-- LOGO FIXA NO CANTO    -->
+    <!-- ---------------------- -->
     <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
 
+    <!-- ---------------------- -->
+    <!-- SCRIPTS JAVASCRIPT    -->
+    <!-- ---------------------- -->
+    <!-- Script de validação do acesso de administrador -->
     <script src="JS/passAdmin.js" defer></script>
+    <!-- Script para melhorar interação dos inputs (animações, foco) -->
     <script src="JS/inputs.js" defer></script>
+    <!-- Script para rolagem suave ou efeitos relacionados ao scroll -->
     <script src="JS/scroll.js" defer></script>
 </body>
 </html>

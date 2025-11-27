@@ -2,37 +2,66 @@
 <html lang="pt-br">
 
 <head>
+    <!-- Define a codificação de caracteres do documento -->
     <meta charset="UTF-8">
+    <!-- Define a viewport para responsividade em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Importa o CSS principal dos formulários -->
     <link rel="stylesheet" href="CSS/styleForm.css">
+    <!-- Importa CSS específico para QR Code -->
     <link rel="stylesheet" href="CSS/styleQrCode.css">
+    <!-- Importa ícones do Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Importa ícones da Font Awesome (opcional, caso use) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Título da página que aparece na aba do navegador -->
     <title>QR Code - Crachá On-line</title>
 </head>
 
 <body>
+    <!-- ---------------------- -->
+    <!-- CONTÊINER CENTRAL      -->
+    <!-- ---------------------- -->
     <div class="container">
+        <!-- Card principal com fundo estilizado -->
         <div class="background_form">
+            
+            <!-- Título do formulário -->
             <h1 class="inter-title">Faça a sua solicitação do QR Code!</h2>
-                <p class="inter-subtitle">Clique no botão abaixo.</p>
+            <!-- Subtítulo explicativo -->
+            <p class="inter-subtitle">Clique no botão abaixo.</p>
 
-                <div class="button-container">
-                    <button type="button" class="btnSolicitarQR">
-                        <span class="material-icons" style="font-size: 24px;">
-                            qr_code
-                        </span>
-                        Solicitar QR Code
-                    </button>
-                </div>
+            <!-- ---------------------- -->
+            <!-- BOTÃO PARA GERAR QR CODE -->
+            <!-- ---------------------- -->
+            <div class="button-container">
+                <button type="button" class="btnSolicitarQR">
+                    <!-- Ícone do botão -->
+                    <span class="material-icons" style="font-size: 24px;">
+                        qr_code
+                    </span>
+                    Solicitar QR Code
+                </button>
+            </div>
 
         </div>
     </div>
 
+    <!-- ---------------------- -->
+    <!-- LOGO FIXA NO CANTO    -->
+    <!-- ---------------------- -->
     <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
 
+    <!-- ---------------------- -->
+    <!-- SCRIPTS JAVASCRIPT    -->
+    <!-- ---------------------- -->
+    <!-- Script principal para gerar QR Code -->
     <script src="JS/qrcode.js" defer></script>
+    <!-- Biblioteca externa de QR Code -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
 </body>
 
 </html>

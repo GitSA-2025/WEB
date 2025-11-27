@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Define a codificação de caracteres -->
+    <meta charset="UTF-8">
+    <!-- Responsividade em diferentes dispositivos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS principal dos formulários -->
+    <link rel="stylesheet" href="CSS/styleForm.css">
+    <!-- CSS para tooltips de senha ou mensagens de validação -->
+    <link rel="stylesheet" href="CSS/tooltip.css">
+    <!-- Ícones do Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Título da página -->
+    <title>Editar Perfil - Crachá On-line</title>
+</head>
+
+<body>
+    <!-- ---------------------- -->
+    <!-- CONTÊINER CENTRAL      -->
+    <!-- ---------------------- -->
+    <div class="container">
+        <div class="background_form">
+
+            <!-- Formulário de edição de perfil -->
+            <form action="home.html" method="post" id="registerForm">
+
+                <!-- Título da página -->
+                <h1 class="inter-title">Edição de perfil</h1>
+                <!-- Subtítulo explicativo -->
+                <p class="inter-subtitle">Sinta-se à vontade para alterar os seus dados.</p>
+
+                <!-- ---------------------- -->
+                <!-- INPUTS DE PERFIL       -->
+                <!-- ---------------------- -->
+
+                <!-- Nome do usuário -->
+                <div class="input-group">
+                    <input type="text" name="username" id="username" required>
+                    <label for="username" class="input-label">
+                        <span class="material-icons">person</span>
+                        Nome
+                    </label>
+                </div>
+
+                <!-- CPF do usuário -->
+                <div class="input-group">
+                    <input type="text" name="usercpf" id="usercpf" required>
+                    <label for="usercpf" class="input-label">
+                        <span class="material-icons">badge</span>
+                        CPF
+                    </label>
+                </div>
+
+                <!-- Telefone do usuário -->
+                <div class="input-group">
+                    <input type="tel" name="userphone" id="userphone" required>
+                    <label for="useremail" class="input-label" inputmode="tel">
+                        <span class="material-icons">phone</span>
+                        Telefone
+                    </label>
+                </div>
+
+                <!-- Checkbox indicando se possui veículo -->
+                <div style="margin: 10px 0;">
+                    <label class="input-label" style="color: white;">
+                        <input type="checkbox" id="temVeiculo" class="input-label">
+                        Possuo veículo
+                    </label>
+                </div>
+
+                <!-- Campo da placa do veículo (aparece se checkbox estiver marcado) -->
+                <div class="input-group" id="placaGroup" style="display: none;">
+                    <input type="text" id="placa" data-type="placa">
+                    <label for="placa" class="input-label">
+                        <span class="material-icons">directions_car</span>
+                        Placa do Veículo
+                    </label>
+                </div>
+
+                <!-- ---------------------- -->
+                <!-- BOTÃO SALVAR ALTERAÇÕES -->
+                <!-- ---------------------- -->
+                <button type="submit" name="btnLogin" class="btnLogin">
+                    <span class="material-icons">save</span>
+                    Salvar alterações
+                </button><br>
+            </form>
+        </div>
+    </div>
+
+    <!-- ---------------------- -->
+    <!-- LOGO FIXA NO CANTO    -->
+    <!-- ---------------------- -->
+    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
+
+    <!-- ---------------------- -->
+    <!-- SCRIPTS JAVASCRIPT    -->
+    <!-- ---------------------- -->
+    <!-- Script para animações/interação dos inputs -->
+    <script src="JS/inputs.js" defer></script>
+    <!-- Script para visualizar dados da conta -->
+    <script src="JS/viewConta.js" defer></script>
+    <!-- Script para permitir edição e salvar perfil -->
+    <script src="JS/editProfile.js" defer></script>
+    <!-- Script de rolagem suave/efeitos de scroll -->
+    <script src="JS/scroll.js" defer></script>
+</body>
+
+</html>

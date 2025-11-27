@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+    <!-- Define a codificação de caracteres -->
     <meta charset="UTF-8">
+    <!-- Responsividade para diferentes dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS principal de formulários -->
     <link rel="stylesheet" href="CSS/styleForm.css">
+    <!-- CSS específico da home -->
     <link rel="stylesheet" href="CSS/home.css">
+    <!-- Ícones do Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
+    <!-- Título da página -->
     <title>Home - Crachá On-line</title>
 </head>
+
 <body>
+    <!-- ---------------------- -->
+    <!-- CONTÊINER CENTRAL      -->
+    <!-- ---------------------- -->
     <div class="container">
-       <div class="background_form">
+        <div class="background_form">
+
+            <!-- FOTO DE PERFIL -->
             <img src="IMG/account_circle.png" alt="foto de perfil do usuário" class="profile-picture">
 
+            <!-- ---------------------- -->
+            <!-- INFORMAÇÕES DO USUÁRIO -->
+            <!-- ---------------------- -->
+
+            <!-- Nome -->
             <p class="info-text">
                 <span class="material-icons" style="font-size: 23px;">
                     person
@@ -23,6 +42,8 @@
             <p class="userinfo-text" id="userName">
                 Nome
             </p>
+
+            <!-- CPF -->
             <p class="info-text">
                 <span class="material-icons" style="font-size: 23px;">
                     badge
@@ -32,6 +53,8 @@
             <p class="userinfo-text" id="userCPF">
                 CPF do usuário
             </p>
+
+            <!-- Email -->
             <p class="info-text">
                 <span class="material-icons" style="font-size: 23px;">
                     email
@@ -41,6 +64,8 @@
             <p class="userinfo-text" id="userEmail">
                 Email
             </p>
+
+            <!-- Telefone -->
             <p class="info-text">
                 <span class="material-icons" style="font-size: 23px;">
                     phone
@@ -50,6 +75,8 @@
             <p class="userinfo-text" id="userPhone">
                 (11) 99999-9999
             </p>
+
+            <!-- Tipo de pessoa -->
             <p class="info-text">
                 <span class="material-icons" style="font-size: 23px;">
                     group
@@ -60,13 +87,30 @@
                 Tipo de pessoa
             </p>
 
+            <!-- Placa do veículo -->
+            <p class="info-text">
+                <span class="material-icons" style="font-size: 23px;">
+                    directions_car
+                </span>
+                Placa do veículo
+            </p>
+            <p class="userinfo-text" id="plate">
+                Placa do veículo
+            </p>
+
+            <!-- ---------------------- -->
+            <!-- BOTÕES DE AÇÃO        -->
+            <!-- ---------------------- -->
             <div class="button-container">
+                <!-- Botão para gerar QR Code -->
                 <button type="button" class="btnGenerateQR" onclick="window.location.href='qrcode.html'">
                     <span class="material-icons">
                         qr_code
                     </span>
                     Gerar QR Code
                 </button>
+
+                <!-- Botão para editar perfil -->
                 <button type="button" class="btnEditProfile" onclick="window.location.href='editProfile.html'">
                     <span class="material-icons">
                         manage_accounts
@@ -74,8 +118,8 @@
                     Editar perfil
                 </button>
             </div>
-            
 
+            <!-- Botão de logout -->
             <div class="button-container-logout">
                 <button type="button" class="btnLogout" onclick="window.location.href='index.html'">
                     <span class="material-icons">
@@ -84,15 +128,18 @@
                     Sair
                 </button> 
             </div>
-            
-
         </div>
     </div>
 
-    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
+    <!-- LOGO FIXA -->
+        <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
 
-    
-    
+    <!-- ---------------------- -->
+    <!-- SCRIPTS JAVASCRIPT    -->
+    <!-- ---------------------- -->
+    <!-- Script para gerar QR Code -->
     <script src="JS/qrcode.js" defer></script>
+    <!-- Script de manipulação de dados e interface da home -->
+    <script src="JS/home.js" defer></script>
 </body>
 </html>

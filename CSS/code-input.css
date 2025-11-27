@@ -1,25 +1,32 @@
+/* ------------------------- */
+/* INPUT DE CÓDIGO           */
+/* ------------------------- */
+
+/* Contêiner que agrupa os inputs de código, centralizando-os e adicionando espaçamento */
 .code-input {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 10px; /* Espaço entre cada input */
+  margin: 20px 0; /* Margem superior e inferior */
 }
 
+/* Estilo individual de cada input de código */
 .code-input input {
-  width: 50px;
-  height: 60px;
-  text-align: center;
-  font-size: 24px;
-  border: 2px solid #27445B;
-  border-radius: 10px;
-  background-color: #ffffff;
-  color: #27445B;
-  outline: none;
-  transition: 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 50px; /* Largura do input */
+  height: 60px; /* Altura do input */
+  text-align: center; /* Centraliza o texto digitado */
+  font-size: 24px; /* Tamanho da fonte do código */
+  border: 2px solid #27445B; /* Borda azul escura */
+  border-radius: 10px; /* Cantos arredondados */
+  background-color: #ffffff; /* Fundo branco */
+  color: #27445B; /* Cor do texto */
+  outline: none; /* Remove contorno padrão do browser */
+  transition: 0.2s ease; /* Transição suave para foco */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 
+/* Estilo aplicado quando o input está em foco */
 .code-input input:focus {
-  border-color: #66aaff;
-  box-shadow: 0 0 0 2px rgba(102, 170, 255, 0.2);
+  border-color: #66aaff; /* Borda muda para azul claro */
+  box-shadow: 0 0 0 2px rgba(102, 170, 255, 0.2); /* Realce sutil ao redor */
 }

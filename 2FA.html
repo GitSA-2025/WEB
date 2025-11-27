@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Define codificação de caracteres -->
     <meta charset="UTF-8">
+    <!-- Define viewport para responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS principal dos formulários -->
     <link rel="stylesheet" href="CSS/styleForm.css">
+    <!-- CSS específico para os inputs do código -->
     <link rel="stylesheet" href="CSS/code-input.css">
+    <!-- Ícones do Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
+    <!-- Título da página -->
     <title>Verificação - Crachá On-line</title>
 </head>
 <body>
+    <!-- ---------------------- -->
+    <!-- CONTÊINER CENTRAL      -->
+    <!-- ---------------------- -->
     <div class="container">
        <div class="background_form">
+
+            <!-- Formulário de verificação 2FA -->
             <form action="home.html" method="post" id="verificationForm">
-                <h1 class="inter-title">Verificação de dois fatores</h2>
-                <p class="inter-subtitle">Verifique seu e-mail. Enviamos um código de verificação para continuar o cadastro.</p>
+
+                <!-- Título -->
+                <h1 class="inter-title">Verificação de dois fatores</h1>
+                <!-- Subtítulo explicando o processo -->
+                <p class="inter-subtitle">
+                    Verifique seu e-mail. Enviamos um código de verificação para continuar o cadastro.
+                </p>
                 
+                <!-- ---------------------- -->
+                <!-- INPUTS DO CÓDIGO       -->
+                <!-- ---------------------- -->
                 <div class="code-input">
+                    <!-- Cada input aceita apenas 1 dígito -->
                     <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
                     <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
                     <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
@@ -25,20 +46,34 @@
                     <input type="text" maxlength="1" inputmode="numeric" pattern="\d*" />
                 </div>
 
+                <!-- ---------------------- -->
+                <!-- BOTÃO ENVIAR CÓDIGO     -->
+                <!-- ---------------------- -->
                 <button type="submit" name="btnLogin" class="btnLogin">
                     <span class="material-icons">login</span>
                     Entrar
                 </button><br>
+
+                <!-- Link para reenviar código -->
                 <div class="row">
-                    <p class="inter-text">Não recebeu o código?</p> <a href="2FA.html" class="inter-linktext">Reenvie o código por aqui.</a>
+                    <p class="inter-text">Não recebeu o código?</p>
+                    <a href="2FA.html" class="inter-linktext">Reenvie o código por aqui.</a>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- ---------------------- -->
+    <!-- LOGO FIXA NO CANTO    -->
+    <!-- ---------------------- -->
     <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
 
+    <!-- ---------------------- -->
+    <!-- SCRIPTS JAVASCRIPT    -->
+    <!-- ---------------------- -->
+    <!-- Script para navegação automática entre inputs do código -->
     <script src="JS/code-input.js" defer></script>
+    <!-- Script de lógica da 2FA -->
     <script src="JS/2FA.js" defer></script>
 </body>
 </html>

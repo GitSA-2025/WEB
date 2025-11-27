@@ -1,53 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Define a codificação de caracteres do documento -->
     <meta charset="UTF-8">
+    <!-- Define a viewport para responsividade em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Importa o CSS principal do formulário de login -->
     <link rel="stylesheet" href="CSS/styleForm.css">
+    
+    <!-- Importa ícones do Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
+    <!-- Título da página que aparece na aba do navegador -->
     <title>Login - Crachá On-line</title>
 </head>
 <body>
+    <!-- Contêiner centralizador da página -->
     <div class="container">
+       <!-- Card principal com fundo estilizado -->
        <div class="background_form">
+            <!-- Formulário de login -->
             <form action="" method="post" id="loginForm">
+                
+                <!-- Título do formulário -->
                 <h1 class="inter-title">Seja bem-vindo novamente ao Crachá Online!</h2>
+                
+                <!-- Subtítulo explicativo -->
                 <p class="inter-subtitle">Realize o seu login para ter acesso ao seu crachá.</p>
                 
+                <!-- ---------------------- -->
+                <!-- INPUT EMAIL           -->
+                <!-- ---------------------- -->
                 <div class="input-group">
+                    <!-- Campo de email do usuário -->
                     <input type="email" name="useremail" id="useremail" required>
+                    <!-- Label estilizada com ícone -->
                     <label for="useremail" class="input-label">
                         <span class="material-icons">mail</span>
                         Email
                     </label>
                 </div>
+
+                <!-- ---------------------- -->
+                <!-- INPUT SENHA           -->
+                <!-- ---------------------- -->
                 <div class="input-group">
+                    <!-- Campo de senha do usuário -->
                     <input type="password" name="userpass" id="userpass" required>
+                    <!-- Label estilizada com ícone -->
                     <label for="userpass" class="input-label">
                         <span class="material-icons">lock</span>
                         Senha
                     </label>
                 </div>
 
+                <!-- Link para recuperar senha -->
                 <a href="#" class="resetpass">Esqueci a senha</a>
 
+                <!-- ---------------------- -->
+                <!-- BOTÃO DE LOGIN        -->
+                <!-- ---------------------- -->
                 <button type="submit" name="btnLogin" class="btnLogin">
                     Entrar
                     <span class="material-icons">login</span>
                 </button><br>
+
+                <!-- ---------------------- -->
+                <!-- LINK PARA CADASTRO     -->
+                <!-- ---------------------- -->
                 <div class="row">
-                    <p class="inter-text">Não tem uma conta?</p> <a href="register.html" class="inter-linktext">Cadastre-se</a>
+                    <p class="inter-text">Não tem uma conta?</p> 
+                    <a href="register.html" class="inter-linktext">Cadastre-se</a>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- ---------------------- -->
+    <!-- LOGO FIXA NO CANTO    -->
+    <!-- ---------------------- -->
     <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
 
-    
+    <!-- ---------------------- -->
+    <!-- SCRIPTS JAVASCRIPT    -->
+    <!-- ---------------------- -->
+    <!-- Script para controlar os inputs (máscaras, animações etc.) -->
     <script src="JS/inputs.js" defer></script>
+    <!-- Script principal de login -->
     <script src="JS/login.js" defer></script>
+    <!-- Script para controle de scroll e efeitos -->
     <script src="JS/scroll.js" defer></script>
 </body>
 </html>

@@ -1,24 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+    <!-- Define a codificação de caracteres -->
     <meta charset="UTF-8">
+    <!-- Responsividade para dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS principal de formulários -->
     <link rel="stylesheet" href="CSS/styleForm.css">
+
+    <!-- Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
+    <!-- Título da página -->
     <title>Aguarde - Crachá On-line</title>
 </head>
+
 <body>
+    <!-- ---------------------- -->
+    <!-- CONTÊINER PRINCIPAL    -->
+    <!-- ---------------------- -->
     <div class="container">
-       <div class="background_form">
-            <h1 class="inter-title">A solicitação do QR Code foi feita!</h2>
-            <p class="inter-subtitle">Por favor, <strong>NÃO</strong> feche o navegador e aguarde a aprovação...</p> <br><br>
+        <div class="background_form">
+
+            <!-- Título informativo -->
+            <h1 class="inter-title">A solicitação do QR Code foi feita!</h1>
+            <!-- Mensagem de instrução para o usuário -->
+            <p class="inter-subtitle">
+                Por favor, NÃO feche o navegador e aguarde a aprovação...
+            </p>
+
+            <!-- Loader animado (via CSS) -->
             <div class="loader"></div>
-        </div>    
+
+        </div>
     </div>
 
+    <!-- LOGO FIXA -->
     <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
-    
-    <script src="JS/qrcode.js" defer></script> 
+
+    <!-- ---------------------- -->
+    <!-- SCRIPTS JAVASCRIPT    -->
+    <!-- ---------------------- -->
+    <!-- Biblioteca QR Code (caso necessário gerar QR em background) -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <!-- Script personalizado para manipular QR Code -->
+    <script src="JS/qrcode.js" defer></script>
+
 </body>
 </html>
