@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
             singleUse: isVisitante
           };
 
-          await fetch("/api/salvar-qrcode", {
+          await fetch(`${API_BASE_URL}/salvar-qrcode`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
