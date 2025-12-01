@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==============================
   const statusDisplay = document.querySelector(".inter-subtitle");
   if (statusDisplay) {
-    console.log("✅ Polling iniciado...");
+    console.log("Polling iniciado...");
 
     let pollingInterval;
 
@@ -90,9 +90,36 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.status === "aprovado") {
           clearInterval(pollingInterval);
 
-          const payload = JSON.stringify(data.userData);
+          const isVisitante = data.userData.type_person === "visitante";
 
-          QRCode.toDataURL(payload)
+          const qrId = crypto.randomUUID();
+
+          let expiresAt = null;
+
+          if (isVisitante) {
+            const agora = new Date();
+            expiresAt = new Date(agora.getTime() + 45 * 60000); // 45 minutos
+          }
+
+          const payload = {
+            ...data.userData,
+            qrId,
+            expiresAt,
+            singleUse: isVisitante
+          };
+
+          await fetch("/api/salvar-qrcode", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              qrId,
+              email: data.userData.email,
+              expiresAt,
+              singleUse: isVisitante
+            })
+          });
+
+          QRCode.toDataURL(JSON.stringify(payload))
             .then(url => {
               localStorage.setItem("qrCodeUrl", url);
               localStorage.setItem("qrMessage", "QR Code aprovado!");
@@ -102,20 +129,19 @@ document.addEventListener("DOMContentLoaded", () => {
               console.error("Erro ao gerar QR Code:", err);
               statusDisplay.innerText = "Erro ao gerar QR Code.";
             });
-
         } else if (data.status === "negado") {
           // Se negado, mostra mensagem e limpa o polling
           clearInterval(pollingInterval);
-          statusDisplay.innerHTML = `❌ Solicitação negada.<br>Volte para a <a href="home.html">Home</a>.`;
+          statusDisplay.innerHTML = `Solicitação negada.<br>Volte para a <a href="home.html">Home</a>.`;
         } else if (data.status === "pendente") {
           // Se ainda pendente, atualiza status
           statusDisplay.innerText = "Aguardando aprovação do porteiro...";
         } else {
-          statusDisplay.innerHTML = `⚠️ Status desconhecido.`;
+          statusDisplay.innerHTML = `Status desconhecido.`;
         }
 
       } catch (err) {
-        console.error("❌ Erro no polling:", err);
+        console.error("Erro no polling:", err);
         statusDisplay.innerText = "Erro de conexão...";
       }
     }

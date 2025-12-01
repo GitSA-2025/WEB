@@ -23,17 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
       qrImage.src = qrCodeUrl;
     } else {
       document.body.innerHTML = `
-        <div class="container">
-          <div class="background_form">
-            <p>QR Code não encontrado ou inválido. Volte e <a href="qrcode.html">gere novamente</a>.</p>
-          </div>
+      <div class="container">
+        <div class="background_form">
+          <p>QR Code não encontrado ou inválido. Volte e <a href="qrcode.html">gere novamente</a>.</p>
         </div>
-      `;
+      </div>
+    `;
     }
 
-    // Limpa localStorage para evitar QR Codes antigos
-    localStorage.removeItem("qrCodeUrl");
-    localStorage.removeItem("qrMessage");
+    setTimeout(() => {
+      localStorage.removeItem("qrCodeUrl");
+      localStorage.removeItem("qrMessage");
+    }, 60000); // só apaga depois de 1 min
   }
 
   // Envio por WhatsApp
