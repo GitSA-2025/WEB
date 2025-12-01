@@ -110,7 +110,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
           await fetch(`${API_BASE_URL}/salvar-qrcode`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
             body: JSON.stringify({
               qrId,
               email: data.userData.email,
