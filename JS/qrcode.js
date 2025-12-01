@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.status === "aprovado") {
           clearInterval(pollingInterval);
 
-          const isVisitante = data.userData.type_person === "visitante";
+          const isVisitante = data.userData.type_user === "visitante" || data.userData.tipo === "visitante";
 
           const qrId = crypto.randomUUID();
 
