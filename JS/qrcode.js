@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==============================
   if (btnSolicitarQR) {
     btnSolicitarQR.addEventListener("click", async () => {
+
+      localStorage.removeItem("qrCodeUrl");
+      localStorage.removeItem("qrMessage");
+      console.log("Dados antigos de QR Code limpos.");
       try {
         // Cria URL para solicitação de QR Code, encodeURIComponent para email
         const url = `${API_BASE_URL}/solicitar-qrcode/${encodeURIComponent(user_email)}`;
@@ -78,8 +82,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (!res.ok) {
-          console.error("❌ Erro HTTP:", res.status);
-          statusDisplay.innerText = "Erro ao consultar status...";
+          const errorData = await res.json().catch(() => ({}));
+          console.error("❌ Erro HTTP:", res.status, errorData);
+
+          if (res.status === 403 || res.status === 404) {
+            clearInterval(pollingInterval); // 🛑 PARA O POLLING
+            statusDisplay.innerHTML = `
+               <span style="color: red">Erro: ${errorData.error || "Solicitação não encontrada."}</span><br>
+               <a href="home.html" style="text-decoration: underline;">Voltar para Home e tentar novamente</a>
+             `;
+          }
           return;
         }
 
@@ -89,9 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Se aprovado, gera o QR Code e salva no localStorage
         if (data.status === "aprovado") {
           clearInterval(pollingInterval);
+          statusDisplay.innerText = "Aprovado! Gerando QR Code...";
 
-          const isVisitante = data.userData.type_user === "visitante" || data.userData.tipo === "visitante";
+          const agora = new Date().toLocaleString("pt-BR");
+          localStorage.setItem("qrGeneratedAt", agora);
 
+          const isVisitante = data.userData.type_user === "visitante";
           const qrId = crypto.randomUUID();
 
           let expiresAt = null;
@@ -135,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (data.status === "negado") {
           // Se negado, mostra mensagem e limpa o polling
           clearInterval(pollingInterval);
-          statusDisplay.innerHTML = `Solicitação negada.<br>Volte para a <a href="home.html">Home</a>.`;
+          statusDisplay.innerHTML = `Solicitação negada pelo porteiro.<br><a href="home.html">Voltar</a>`;
         } else if (data.status === "pendente") {
           // Se ainda pendente, atualiza status
           statusDisplay.innerText = "Aguardando aprovação do porteiro...";

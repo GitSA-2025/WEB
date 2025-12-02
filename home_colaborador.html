@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="CSS/styleForm.css">
+  <link rel="stylesheet" href="CSS/home.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title>Home - Colaborador</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="background_form">
+
+      <img src="IMG/account_circle.png" class="profile-picture">
+
+      <p class="info-text">
+        <span class="material-icons">person</span>
+        Nome
+      </p>
+      <p class="userinfo-text" id="userName"></p>
+
+      <p class="info-text">
+        <span class="material-icons">badge</span>
+        CPF
+      </p>
+      <p class="userinfo-text" id="userCPF"></p>
+
+      <p class="info-text">
+        <span class="material-icons">email</span>
+        E-mail
+      </p>
+      <p class="userinfo-text" id="userEmail"></p>
+
+      <p class="info-text">
+        <span class="material-icons">phone</span>
+        Telefone
+      </p>
+      <p class="userinfo-text" id="userPhone"></p>
+
+      <p class="info-text">
+        <span class="material-icons">group</span>
+        Tipo de pessoa
+      </p>
+      <p class="userinfo-text" id="userType"></p>
+
+      <p class="info-text">
+        <span class="material-icons">directions_car</span>
+        Placa do veículo
+      </p>
+      <p class="userinfo-text" id="plate"></p>
+
+      <h3 style="margin-top: 20px;">Seu QR Code fixo</h3>
+
+      <img id="qrcodeImage" style="margin-top:10px; width:250px;">
+
+      <div class="button-container">
+        <button class="btnEditProfile" onclick="window.location.href='editProfile.html'">
+          <span class="material-icons">manage_accounts</span>
+          Editar perfil
+        </button>
+      </div>
+
+      <div class="button-container-logout">
+        <button class="btnLogout" onclick="logout()">
+          <span class="material-icons">logout</span>
+          Sair
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <img src="IMG/image.png" class="logo-fixa">
+
+  <script src="JS/home_colaborador.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+</body>
+</html>
