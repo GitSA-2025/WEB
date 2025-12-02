@@ -85,13 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
           const errorData = await res.json().catch(() => ({}));
           console.error("❌ Erro HTTP:", res.status, errorData);
 
-          if (res.status === 403 || res.status === 404) {
+          /*if (res.status === 403 || res.status === 404) {
             clearInterval(pollingInterval); // 🛑 PARA O POLLING
             statusDisplay.innerHTML = `
                <span style="color: red">Erro: ${errorData.error || "Solicitação não encontrada."}</span><br>
                <a href="home.html" style="text-decoration: underline;">Voltar para Home e tentar novamente</a>
              `;
-          }
+          }*/
           return;
         }
 
