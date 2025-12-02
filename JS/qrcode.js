@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1) SOLICITAR QRCODE
   // ==============================
   if (btnSolicitarQR) {
+
+    const subtitleDisplay = document.querySelector(".inter-subtitle");
+    if (subtitleDisplay) {
+      // Assume que a mensagem padrão na qrcode.html é "Clique no botão abaixo."
+      subtitleDisplay.innerHTML = "Clique no botão abaixo.";
+    }
     btnSolicitarQR.addEventListener("click", async () => {
 
       localStorage.removeItem("qrCodeUrl");
@@ -150,6 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (data.status === "negado") {
           // Se negado, mostra mensagem e limpa o polling
           clearInterval(pollingInterval);
+          localStorage.removeItem("qrCodeUrl");
+          localStorage.removeItem("qrMessage");
+
           statusDisplay.innerHTML = `Solicitação negada pelo porteiro.<br><a href="home.html">Voltar</a>`;
         } else if (data.status === "pendente") {
           // Se ainda pendente, atualiza status
