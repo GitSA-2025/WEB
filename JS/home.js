@@ -22,6 +22,12 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 
     const user = await res.json();
+    const tipo = (user.type_user || user.tipo || "").toLowerCase();
+    localStorage.setItem("user_type", tipo);
+
+    if (tipo === "colaborador") {
+      return (window.location.href = "home_colaborador.html");
+    }
 
     document.getElementById("userName").innerText = user.name || user.nome || "-";
     document.getElementById("userCPF").innerText = user.cpf || "-";

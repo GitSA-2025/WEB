@@ -19,7 +19,6 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   localStorage.setItem("token", data.token);
   localStorage.setItem("user_email", email);
 
-  // Agora vamos descobrir o tipo do usuário
   const userRes = await fetch(
     "https://api-web-mobile.accesssystemfatec.workers.dev/api/conta",
     {
@@ -38,12 +37,11 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
   const userData = await userRes.json();
   const tipo = (userData.type_user || userData.tipo || "").toLowerCase();
+  localStorage.setItem("user_type", tipo);
 
-  //Redirecionamento correto:
   if (tipo === "colaborador") {
     window.location.href = "home_colaborador.html";
   } else {
     window.location.href = "home.html";
   }
-
 });
