@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <!-- Define a codificação de caracteres -->
-    <meta charset="UTF-8">
-    <!-- Responsividade para dispositivos móveis -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- CSS principal de formulários -->
-    <link rel="stylesheet" href="CSS/styleForm.css">
-
-    <!-- Google Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Título da página -->
-    <title>Aguarde - Crachá On-line</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/styleForm.css">
+  <link rel="stylesheet" href="CSS/styleQrCode.css">
+  <title>Aguardando Aprovação - Crachá On-line</title>
 </head>
-
 <body>
-    <!-- ---------------------- -->
-    <!-- CONTÊINER PRINCIPAL    -->
-    <!-- ---------------------- -->
-    <div class="container">
-        <div class="background_form">
-
-            <!-- Título informativo -->
-            <h1 class="inter-title">A solicitação do QR Code foi feita!</h1>
-            <!-- Mensagem de instrução para o usuário -->
-            <p class="inter-subtitle">
-                Por favor, NÃO feche o navegador e aguarde a aprovação...
-            </p>
-
-            <!-- Loader animado (via CSS) -->
-            <div class="loader"></div>
-
-        </div>
+  <div class="container" id="waitingScreen">
+    <div class="brand-header">
+      <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
     </div>
 
-    <!-- LOGO FIXA -->
-    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
+    <div class="background_form">
+      <div class="stepper">
+        <div class="step done"><span class="step-dot">✓</span> Solicitar</div>
+        <div class="step-line"></div>
+        <div class="step active"><span class="step-dot">2</span> Aprovação</div>
+        <div class="step-line"></div>
+        <div class="step"><span class="step-dot">3</span> Crachá</div>
+      </div>
 
-    <!-- ---------------------- -->
-    <!-- SCRIPTS JAVASCRIPT    -->
-    <!-- ---------------------- -->
-    <!-- Biblioteca QR Code (caso necessário gerar QR em background) -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-    <!-- Script personalizado para manipular QR Code -->
-    <script src="JS/qrcode.js" defer></script>
+      <h1 class="inter-title">Solicitação enviada!</h1>
+      <p class="inter-subtitle" id="waitingStatus">
+        Aguardando aprovação da portaria... Mantenha esta tela aberta.
+      </p>
 
+      <div class="loader"></div>
+
+      <div class="button-container" style="margin-top: 24px;">
+        <button type="button" class="btnVoltar" onclick="window.location.href='home.html'">
+          <span class="material-icons">arrow_back</span>
+          Voltar para Home
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="JS/qrcode.js" defer></script>
 </body>
 </html>

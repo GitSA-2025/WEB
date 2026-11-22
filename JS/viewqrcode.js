@@ -2,80 +2,70 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
   if (!token) {
     alert("Você precisa estar logado.");
-    return window.location.href = "index.html";
+    return (window.location.href = "index.html");
   }
 
   const qrImage = document.getElementById("qrImage");
   const qrCodeUrl = localStorage.getItem("qrCodeUrl");
-  const qrMessage = localStorage.getItem("qrMessage") || "Aproxime o QR Code ao leitor.";
+  const qrMessage = localStorage.getItem("qrMessage") || "Aproxime o QR Code do leitor na portaria.";
+  const qrExpiresAt = localStorage.getItem("qrExpiresAt");
 
-  const btnWhats = document.querySelector(".btnWhatsApp");
-  const btnEmail = document.querySelector(".btnEmail");
-
-  const API_BASE_URL = "https://api-web-mobile.accesssystemfatec.workers.dev/api";
-
-  // Mostra mensagem e QR Code
   const messageElement = document.getElementById("qrMessage");
-  if (messageElement) messageElement.innerText = qrMessage;
+  const timerElement = document.getElementById("qrTimer");
+  const btnDownload = document.getElementById("btnDownloadQR");
 
-  if (qrImage) {
-    if (qrCodeUrl && qrCodeUrl.startsWith("data:image")) {
-      qrImage.src = qrCodeUrl;
-    } else {
-      document.body.innerHTML = `
+  if (messageElement) {
+    messageElement.innerText = qrMessage;
+  }
+
+  if (!qrCodeUrl || !qrCodeUrl.startsWith("data:image")) {
+    document.body.innerHTML = `
       <div class="container">
         <div class="background_form">
-          <p>QR Code não encontrado ou inválido. Volte e <a href="qrcode.html">gere novamente</a>.</p>
+          <h1 class="inter-title">Nenhum QR Code ativo</h1>
+          <p class="inter-subtitle">Solicite um novo código de acesso para entrar.</p>
+          <button type="button" class="btnSolicitarQR" onclick="window.location.href='qrcode.html'">
+            <span class="material-icons">qr_code</span>
+            Solicitar QR Code
+          </button>
         </div>
       </div>
     `;
-    }
-
-    setTimeout(() => {
-      localStorage.removeItem("qrCodeUrl");
-      localStorage.removeItem("qrMessage");
-    }, 60000); // só apaga depois de 1 min
+    return;
   }
 
-  // Envio por WhatsApp
-  if (btnWhats) {
-    btnWhats.addEventListener("click", async () => {
-      try {
-        const res = await fetch(`${API_BASE_URL}/enviar-qrcode-whatsapp`, {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json"
-          }
-        });
+  if (qrImage) {
+    qrImage.src = qrCodeUrl;
+  }
 
-        if (res.ok) alert("QR Code enviado por WhatsApp com sucesso!");
-        else alert("Erro ao enviar via WhatsApp. Verifique o servidor.");
-      } catch (err) {
-        console.error(err);
-        alert("Erro de conexão ao enviar WhatsApp.");
-      }
+  // Botão para baixar o QR Code como imagem
+  if (btnDownload) {
+    btnDownload.addEventListener("click", () => {
+      const link = document.createElement("a");
+      link.href = qrCodeUrl;
+      link.download = "cracha-qrcode.png";
+      link.click();
     });
   }
 
-  // Envio por e-mail
-  if (btnEmail) {
-    btnEmail.addEventListener("click", async () => {
-      try {
-        const res = await fetch(`${API_BASE_URL}/enviar-qrcode-email`, {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json"
-          }
-        });
+  // Contador regressivo de 45 minutos para visitantes
+  if (qrExpiresAt && timerElement) {
+    const expiraEm = new Date(qrExpiresAt).getTime();
 
-        if (res.ok) alert("QR Code enviado por e-mail com sucesso!");
-        else alert("Erro ao enviar por e-mail. Verifique o servidor.");
-      } catch (err) {
-        console.error(err);
-        alert("Erro de conexão ao enviar e-mail.");
+    const atualizarContador = () => {
+      const restante = expiraEm - Date.now();
+      if (restante <= 0) {
+        timerElement.innerText = "QR Code expirado";
+        localStorage.removeItem("qrCodeUrl");
+        localStorage.removeItem("qrExpiresAt");
+        return;
       }
-    });
+      const min = Math.floor(restante / 60000);
+      const seg = Math.floor((restante % 60000) / 1000);
+      timerElement.innerText = `Válido por ${String(min).padStart(2, "0")}:${String(seg).padStart(2, "0")}`;
+    };
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
   }
 });

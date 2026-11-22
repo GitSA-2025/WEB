@@ -3,80 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="CSS/styleForm.css">
   <link rel="stylesheet" href="CSS/home.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <title>Home - Colaborador</title>
+  <title>Crachá Colaborador</title>
 </head>
-
 <body>
   <div class="container">
-    <div class="background_form">
+    <div class="background_form wide-card">
 
-      <img src="IMG/account_circle.png" class="profile-picture">
-
-      <p class="info-text">
-        <span class="material-icons">person</span>
-        Nome
-      </p>
-      <p class="userinfo-text" id="userName"></p>
-
-      <p class="info-text">
-        <span class="material-icons">badge</span>
-        CPF
-      </p>
-      <p class="userinfo-text" id="userCPF"></p>
-
-      <p class="info-text">
-        <span class="material-icons">email</span>
-        E-mail
-      </p>
-      <p class="userinfo-text" id="userEmail"></p>
-
-      <p class="info-text">
-        <span class="material-icons">phone</span>
-        Telefone
-      </p>
-      <p class="userinfo-text" id="userPhone"></p>
-
-      <p class="info-text">
-        <span class="material-icons">group</span>
-        Tipo de pessoa
-      </p>
-      <p class="userinfo-text" id="userType"></p>
-
-      <p class="info-text">
-        <span class="material-icons">directions_car</span>
-        Placa do veículo
-      </p>
-      <p class="userinfo-text" id="plate"></p>
-
-      <h3 style="margin-top: 20px; color: white;">Seu QR Code fixo</h3>
-
-      <img id="qrcodeImage" style="margin-top:10px; width:250px;">
-
-      <div class="button-container">
-        <button class="btnEditProfile" onclick="window.location.href='editProfile.html'">
-          <span class="material-icons">manage_accounts</span>
-          Editar perfil
+      <div class="badge-topbar">
+        <div class="badge-brand">
+          <img src="IMG/image.png" alt="Logo">
+          <span>Crachá On-line</span>
+        </div>
+        <button type="button" class="btnLogout" onclick="logout()">
+          <span class="material-icons" style="font-size: 18px;">logout</span>
+          Sair
         </button>
       </div>
 
-      <div class="button-container-logout">
-        <button class="btnLogout" onclick="logout()">
-          <span class="material-icons">logout</span>
-          Sair
+      <div class="profile-header">
+        <img src="IMG/account_circle.png" alt="Foto de perfil" class="profile-picture">
+        <h1 class="profile-name" id="userName">Carregando...</h1>
+        <span class="role-badge">
+          <span class="material-icons" style="font-size: 15px;">badge</span>
+          <span id="userType">Colaborador</span>
+        </span>
+      </div>
+
+      <div class="fixed-qr-box">
+        <h3>Seu QR Code fixo de acesso</h3>
+        <img id="qrcodeImage" alt="QR Code do Colaborador">
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <p class="info-text"><span class="material-icons">badge</span> CPF</p>
+          <p class="userinfo-text" id="userCPF">-</p>
+        </div>
+
+        <div class="info-card">
+          <p class="info-text"><span class="material-icons">phone</span> Telefone</p>
+          <p class="userinfo-text" id="userPhone">-</p>
+        </div>
+
+        <div class="info-card full-width">
+          <p class="info-text"><span class="material-icons">email</span> E-mail</p>
+          <p class="userinfo-text" id="userEmail">-</p>
+        </div>
+
+        <div class="info-card full-width">
+          <p class="info-text"><span class="material-icons">directions_car</span> Placa do veículo</p>
+          <p class="userinfo-text" id="plate">-</p>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button type="button" class="btnEditProfile" onclick="window.location.href='editProfile.html'">
+          <span class="material-icons">manage_accounts</span>
+          Editar perfil
         </button>
       </div>
 
     </div>
   </div>
 
-  <img src="IMG/image.png" class="logo-fixa">
-
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
   <script src="JS/home_colaborador.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
 </body>
 </html>

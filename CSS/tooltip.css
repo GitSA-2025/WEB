@@ -1,59 +1,25 @@
-/* ------------------------- */
-/* IMPORTAÇÃO DE FONTES      */
-/* ------------------------- */
-
-/* Fonte Inter do Google Fonts para uso em tooltips */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-
-/* ------------------------- */
-/* TOOLTIP                   */
-/* ------------------------- */
-
-/* Estilo geral do tooltip (mensagem de ajuda ou validação) */
 .tooltip {
-    display: none; /* Inicialmente oculto */
-    position: absolute; /* Posicionamento absoluto em relação ao elemento pai */
-    top: -10px; /* Posição vertical */
-    right: -220px; /* Posição horizontal */
-    width: 200px; /* Largura do tooltip */
-    background: #1c1c1c; /* Fundo escuro */
-    color: #ccc; /* Cor do texto */
-    border-radius: 8px; /* Cantos arredondados */
-    padding: 10px; /* Espaçamento interno */
-    font-size: 13px; /* Tamanho da fonte */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-    z-index: 10; /* Fica acima de outros elementos */
+  display: none;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  margin-top: 8px;
+  text-align: left;
 }
 
-/* Estilo do texto dentro do tooltip */
 .tooltip p {
-    font-family: "Inter", sans-serif; /* Fonte Inter */
-    font-weight: 300; /* Peso leve */
-    margin: 5px 0; /* Margem entre linhas */
-    transition: 0.3s; /* Transição suave */
+  margin: 4px 0;
+  transition: color 0.2s ease;
 }
 
-/* Texto que indica validação positiva */
 .tooltip .valid {
-    color: #4caf50; /* Verde */
+  color: #0e6b4b;
+  font-weight: 600;
 }
 
-/* Texto que indica validação negativa */
 .tooltip .invalid {
-    color: #f44336; /* Vermelho */
-}
-
-
-/* ------------------------- */
-/* RESPONSIVIDADE            */
-/* ------------------------- */
-
-/* Ajustes do tooltip em telas menores (mobile) */
-@media screen and (max-width: 500px) {
-  .tooltip {
-    top: 70px; /* Reposiciona verticalmente */
-    right: auto; /* Remove alinhamento à direita */
-    left: 0; /* Alinha à esquerda */
-  }
+  color: #dc2626;
 }

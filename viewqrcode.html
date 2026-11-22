@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <!-- Define a codificação de caracteres -->
-    <meta charset="UTF-8">
-    <!-- Responsividade em dispositivos móveis -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- CSS principal de formulários -->
-    <link rel="stylesheet" href="CSS/styleForm.css">
-    <!-- CSS específico para QR Code -->
-    <link rel="stylesheet" href="CSS/styleQrCode.css">
-
-    <!-- Google Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Font Awesome para ícone do WhatsApp -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Título da página -->
-    <title>Visualização do QR Code - Crachá On-line</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/styleForm.css">
+  <link rel="stylesheet" href="CSS/styleQrCode.css">
+  <title>Crachá QR Code - Crachá On-line</title>
 </head>
-
 <body>
-    <!-- ---------------------- -->
-    <!-- CONTÊINER PRINCIPAL    -->
-    <!-- ---------------------- -->
-    <div class="container">
-        <div class="background_form">
-
-            <!-- Título -->
-            <h1 class="inter-title">Seu código QR Code Aprovado!</h1>
-            <!-- Mensagem dinâmica -->
-            <p class="inter-subtitle" id="qrMessage">
-                Aproxime o Qr Code ao leitor e aguarde a liberação da sua entrada.
-            </p>
-
-            <!-- Imagem do QR Code (será gerada via JS) -->
-            <img src="" alt="QR Code" class="qrImage" id="qrImage">
-
-            <!-- ---------------------- -->
-            <!-- BOTÕES DE AÇÃO        -->
-            <!-- ---------------------- -->
-                <!-- Voltar para a Home -->
-                <button type="button" class="btnVoltar" onclick="window.location.href='home.html'">
-                    <span class="material-icons" style="font-size: 24px;">
-                        home
-                    </span>
-                    Voltar para Home
-                </button>
-            </div>
-        </div>
+  <div class="container">
+    <div class="brand-header">
+      <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
     </div>
 
-    <!-- LOGO FIXA -->
-    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
+    <div class="background_form">
+      <div class="stepper">
+        <div class="step done"><span class="step-dot">✓</span> Solicitar</div>
+        <div class="step-line"></div>
+        <div class="step done"><span class="step-dot">✓</span> Aprovação</div>
+        <div class="step-line"></div>
+        <div class="step active"><span class="step-dot">3</span> Crachá</div>
+      </div>
 
-    <!-- ---------------------- -->
-    <!-- SCRIPTS JAVASCRIPT    -->
-    <!-- ---------------------- -->
-    <!-- Script para exibir QR Code e manipular botões -->
-    <script src="JS/viewqrcode.js" defer></script>
-    <!-- Biblioteca QRCode.js para gerar o QR Code -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+      <span class="status-pill-approved">
+        <span class="material-icons" style="font-size: 16px;">check_circle</span>
+        Acesso Liberado
+      </span>
 
+      <h1 class="inter-title">Seu QR Code está pronto</h1>
+      <p class="inter-subtitle" id="qrMessage" style="margin-bottom: 10px;">
+        Aproxime o QR Code do leitor na portaria.
+      </p>
+
+      <div class="qr-frame">
+        <img src="" alt="QR Code" class="qrImage" id="qrImage">
+        <div class="timer-badge">
+          <span class="material-icons" style="font-size: 16px;">timer</span>
+          <span id="qrTimer">Válido por 45:00</span>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button type="button" class="btnDownloadQR" id="btnDownloadQR">
+          <span class="material-icons">download</span>
+          Baixar QR Code (PNG)
+        </button>
+
+        <button type="button" class="btnVoltar" onclick="window.location.href='home.html'">
+          <span class="material-icons">home</span>
+          Voltar para Home
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="JS/viewqrcode.js" defer></script>
 </body>
 </html>

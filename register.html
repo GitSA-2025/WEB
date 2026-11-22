@@ -1,169 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <!-- Define codificação de caracteres -->
-    <meta charset="UTF-8">
-    <!-- Define viewport para responsividade -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- CSS principal dos formulários -->
-    <link rel="stylesheet" href="CSS/styleForm.css">
-    <!-- CSS para tooltip de senha -->
-    <link rel="stylesheet" href="CSS/tooltip.css">
-    <!-- Ícones do Google Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Título da página -->
-    <title>Cadastro - Crachá On-line</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/styleForm.css">
+  <link rel="stylesheet" href="CSS/tooltip.css">
+  <title>Cadastro - Crachá On-line</title>
 </head>
-
 <body>
-    <!-- ---------------------- -->
-    <!-- CONTÊINER CENTRAL      -->
-    <!-- ---------------------- -->
-    <div class="container">
-
-        <!-- Card do formulário -->
-        <div class="background_form">
-
-            <!-- Formulário de cadastro -->
-            <form action="2FA.html" method="post" id="registerForm">
-
-                <!-- Título do formulário -->
-                <h1 class="inter-title">Seja bem-vindo ao Crachá Online!</h1>
-                <!-- Subtítulo -->
-                <p class="inter-subtitle">Realize o seu cadastro para ter acesso ao seu crachá.</p>
-
-                <!-- ---------------------- -->
-                <!-- CAMPOS DE INPUT        -->
-                <!-- ---------------------- -->
-
-                <!-- Nome -->
-                <div class="input-group">
-                    <input type="text" name="username" id="username" required>
-                    <label for="username" class="input-label">
-                        <span class="material-icons">person</span>
-                        Nome
-                    </label>
-                </div>
-
-                <!-- CPF -->
-                <div class="input-group">
-                    <input type="text" name="usercpf" id="usercpf" data-type="cpf" required>
-                    <label for="usercpf" class="input-label">
-                        <span class="material-icons">badge</span>
-                        CPF
-                    </label>
-                </div>
-
-                <!-- Email -->
-                <div class="input-group">
-                    <input type="email" name="useremail" id="useremail" required>
-                    <label for="useremail" class="input-label">
-                        <span class="material-icons">mail</span>
-                        Email
-                    </label>
-                </div>
-
-                <!-- Telefone -->
-                <div class="input-group">
-                    <input type="tel" name="userphone" id="userphone" data-type="telefone" required>
-                    <label for="useremail" class="input-label">
-                        <span class="material-icons">phone</span>
-                        Telefone
-                    </label>
-                </div>
-
-                <!-- ---------------------- -->
-                <!-- CHECKBOX VEÍCULO       -->
-                <!-- ---------------------- -->
-                <div class="checkbox-group">
-                    <input type="checkbox" id="temVeiculo">
-                    <label for="temVeiculo">
-                        Possuo veículo
-                    </label>
-                </div>
-
-                <!-- Campo placa do veículo (aparece quando checkbox acima está marcado) -->
-                <div class="input-group" id="placaGroup" style="display: none;">
-                    <input type="text" id="placa" data-type="placa">
-                    <label for="placa" class="input-label">
-                        <span class="material-icons">directions_car</span>
-                        Placa do Veículo
-                    </label>
-                </div>
-
-                <!-- ---------------------- -->
-                <!-- SENHA                  -->
-                <!-- ---------------------- -->
-                <div class="input-group">
-                    <input type="password" name="userpass" id="userpass" required>
-                    <label for="userpass" class="input-label">
-                        <span class="material-icons">lock</span>
-                        Senha
-                    </label>
-                    <!-- Tooltip mostrando critérios de senha -->
-                    <div class="tooltip" id="password-tooltip">
-                        <p id="length">• Mínimo de 8 caracteres</p>
-                        <p id="uppercase">• Ao menos 1 letra maiúscula</p>
-                        <p id="lowercase">• Ao menos 1 letra minúscula</p>
-                        <p id="number">• Ao menos 1 número</p>
-                    </div>
-                </div>
-
-                <!-- Confirmação de senha -->
-                <div class="input-group">
-                    <input type="password" name="userpassrep" id="userpassrep" required>
-                    <label for="userpassrep" class="input-label">
-                        <span class="material-icons">lock</span>
-                        Confirme a senha
-                    </label>
-                </div>
-
-                <!-- ---------------------- -->
-                <!-- CHECKBOX TERMOS DE USO  -->
-                <!-- ---------------------- -->
-                <div class="checkbox-group">
-                    <input type="checkbox" id="aceitarTermos">
-                    <label for="aceitarTermos">
-                        Li e aceito os <a href="#" target="_blank">Termos de Uso</a> e a
-                        <a href="#" target="_blank">Política de Privacidade</a>
-                    </label>
-                    <!-- Mensagem de erro se checkbox não estiver marcado -->
-                    <small id="termosErro">Você precisa aceitar os termos para continuar.</small>
-                </div>
-
-                <!-- ---------------------- -->
-                <!-- BOTÃO DE CADASTRO       -->
-                <!-- ---------------------- -->
-                <button type="submit" name="btnLogin" class="btnLogin">
-                    <span class="material-icons">login</span>
-                    Cadastrar
-                </button><br>
-
-                <!-- Link para login caso já tenha conta -->
-                <div class="row">
-                    <p class="inter-text">Já possui uma conta?</p> 
-                    <a href="index.html" class="inter-linktext">Faça o login.</a>
-                </div>
-
-            </form>
-        </div>
+  <div class="container">
+    <div class="brand-header">
+      <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
     </div>
 
-    <!-- ---------------------- -->
-    <!-- LOGO FIXA NO CANTO    -->
-    <!-- ---------------------- -->
-    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
+    <div class="background_form">
+      <form id="registerForm">
+        <h1 class="inter-title">Criar conta de visitante</h1>
+        <p class="inter-subtitle">Preencha seus dados para gerar seu crachá de acesso.</p>
 
-    <!-- ---------------------- -->
-    <!-- SCRIPTS JAVASCRIPT    -->
-    <!-- ---------------------- -->
-    <script src="JS/inputs.js" defer></script>
-    <script src="JS/password.js" defer></script>
-    <script src="JS/register.js" defer></script>
-    <script src="JS/scroll.js" defer></script>
+        <div class="input-group">
+          <input type="text" name="username" id="username" required>
+          <label for="username" class="input-label">
+            <span class="material-icons">person</span>
+            Nome completo
+          </label>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="usercpf" id="usercpf" data-type="cpf" required>
+          <label for="usercpf" class="input-label">
+            <span class="material-icons">badge</span>
+            CPF
+          </label>
+        </div>
+
+        <div class="input-group">
+          <input type="email" name="useremail" id="useremail" required>
+          <label for="useremail" class="input-label">
+            <span class="material-icons">mail</span>
+            E-mail
+          </label>
+        </div>
+
+        <div class="input-group">
+          <input type="tel" name="userphone" id="userphone" data-type="telefone" required>
+          <label for="userphone" class="input-label">
+            <span class="material-icons">phone</span>
+            Telefone
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="temVeiculo">
+          <label for="temVeiculo">Possuo veículo</label>
+        </div>
+
+        <div class="input-group" id="placaGroup" style="display: none;">
+          <input type="text" id="placa" data-type="placa">
+          <label for="placa" class="input-label">
+            <span class="material-icons">directions_car</span>
+            Placa do veículo
+          </label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" name="userpass" id="userpass" required>
+          <label for="userpass" class="input-label">
+            <span class="material-icons">lock</span>
+            Senha
+          </label>
+          <span class="material-icons toggle-password" id="toggleSenha">visibility_off</span>
+        </div>
+
+        <div class="tooltip" id="password-tooltip">
+          <p id="length">• Mínimo de 8 caracteres</p>
+          <p id="uppercase">• Ao menos 1 letra maiúscula</p>
+          <p id="lowercase">• Ao menos 1 letra minúscula</p>
+          <p id="number">• Ao menos 1 número</p>
+        </div>
+
+        <div class="input-group">
+          <input type="password" name="userpassrep" id="userpassrep" required>
+          <label for="userpassrep" class="input-label">
+            <span class="material-icons">lock</span>
+            Confirme a senha
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="aceitarTermos">
+          <label for="aceitarTermos">
+            Li e aceito os <a href="#" target="_blank">Termos de Uso</a> e a
+            <a href="#" target="_blank">Política de Privacidade</a>
+          </label>
+          <small id="termosErro">Você precisa aceitar os termos para continuar.</small>
+        </div>
+
+        <button type="submit" name="btnLogin" class="btnLogin">
+          <span class="material-icons">person_add</span>
+          Cadastrar
+        </button>
+
+        <div class="row">
+          <p class="inter-text">Já possui uma conta?</p>
+          <a href="index.html" class="inter-linktext">Faça o login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="JS/inputs.js" defer></script>
+  <script src="JS/password.js" defer></script>
+  <script src="JS/register.js" defer></script>
+  <script src="JS/scroll.js" defer></script>
 </body>
-
 </html>

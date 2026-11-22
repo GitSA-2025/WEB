@@ -1,123 +1,195 @@
 /* ------------------------- */
-/* BOTÕES PRINCIPAIS         */
+/* INDICADOR DE ETAPAS       */
 /* ------------------------- */
-
-/* Botão para acesso ao site ou plataforma web */
-.btnWeb {
-    background-color: #3788A6;
-    color: #fff;
-    font-family: "Montserrat", serif;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-/* Botão para iniciar contato via WhatsApp */
-.btnWhatsApp {
-    background-color: #25D366;
-    color: #fff;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
 }
 
-/* Botão para enviar ou abrir e-mail */
-.btnEmail {
-    background-color: #8E2927;
-    color: #fff;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.step-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
 }
 
-/* Botão de navegação para voltar à página anterior */
-.btnVoltar {
-    background-color: #27445B;
-    color: #fff;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.step.active {
+  color: var(--primary);
 }
 
-/* Botão para solicitar geração de QR Code */
-.btnSolicitarQR {
-    background-color: #27445B;
-    color: #fff;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.step.active .step-dot {
+  background: var(--primary);
+  color: #ffffff;
 }
 
+.step.done {
+  color: var(--accent);
+}
+
+.step.done .step-dot {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.step-line {
+  width: 24px;
+  height: 2px;
+  background: #e2e8f0;
+}
 
 /* ------------------------- */
-/* ESTILOS GERAIS PARA BOTÃO */
+/* AVISO DE REGRAS DE ACESSO */
 /* ------------------------- */
-
-button {
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin: 10px;
-    width: 70%;
-    max-width: 300px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.info-banner {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text-muted);
 }
 
-/* Efeito de hover em qualquer botão */
-button:hover {
-    transform: scale(1.03);
-    filter: brightness(1.1);
+.info-banner-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+.info-banner-item .material-icons {
+  font-size: 18px;
+  color: var(--primary);
+}
 
 /* ------------------------- */
-/* CONTÊINER DOS BOTÕES      */
+/* MOLDURA DO QR CODE        */
 /* ------------------------- */
+.status-pill-approved {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
 
+.qr-frame {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12px 0 18px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.qrImage {
+  width: 230px;
+  height: 230px;
+  display: block;
+}
+
+.timer-badge {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 8px;
+}
+
+/* ------------------------- */
+/* BOTÕES                    */
+/* ------------------------- */
 .button-container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btnSolicitarQR,
+.btnDownloadQR,
+.btnVoltar {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btnSolicitarQR {
+  background-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(14, 107, 75, 0.22);
+}
+
+.btnSolicitarQR:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btnSolicitarQR:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btnDownloadQR {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.btnDownloadQR:hover {
+  background-color: var(--primary-hover);
+}
+
+.btnVoltar {
+  background-color: var(--surface-subtle);
+  color: var(--text-main);
+  border: 1px solid var(--border-input);
+}
+
+.btnVoltar:hover {
+  background-color: #e2e8f0;
 }

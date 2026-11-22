@@ -1,67 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <!-- Define a codificação de caracteres do documento -->
-    <meta charset="UTF-8">
-    <!-- Define a viewport para responsividade em dispositivos móveis -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Importa o CSS principal dos formulários -->
-    <link rel="stylesheet" href="CSS/styleForm.css">
-    <!-- Importa CSS específico para QR Code -->
-    <link rel="stylesheet" href="CSS/styleQrCode.css">
-    <!-- Importa ícones do Google Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Importa ícones da Font Awesome (opcional, caso use) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Título da página que aparece na aba do navegador -->
-    <title>QR Code - Crachá On-line</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/styleForm.css">
+  <link rel="stylesheet" href="CSS/styleQrCode.css">
+  <title>Solicitar QR Code - Crachá On-line</title>
 </head>
-
 <body>
-    <!-- ---------------------- -->
-    <!-- CONTÊINER CENTRAL      -->
-    <!-- ---------------------- -->
-    <div class="container">
-        <!-- Card principal com fundo estilizado -->
-        <div class="background_form">
-            
-            <!-- Título do formulário -->
-            <h1 class="inter-title">Faça a sua solicitação do QR Code!</h2>
-            <!-- Subtítulo explicativo -->
-            <p class="inter-subtitle">Clique no botão abaixo.</p>
-
-            <!-- ---------------------- -->
-            <!-- BOTÃO PARA GERAR QR CODE -->
-            <!-- ---------------------- -->
-            <div class="button-container">
-                <button type="button" class="btnSolicitarQR">
-                    <!-- Ícone do botão -->
-                    <span class="material-icons" style="font-size: 24px;">
-                        qr_code
-                    </span>
-                    Solicitar QR Code
-                </button>
-            </div>
-
-        </div>
+  <div class="container">
+    <div class="brand-header">
+      <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
     </div>
 
-    <!-- ---------------------- -->
-    <!-- LOGO FIXA NO CANTO    -->
-    <!-- ---------------------- -->
-    <img src="IMG/image.png" alt="Logo da empresa" class="logo-fixa">
+    <div class="background_form">
+      <div class="stepper">
+        <div class="step active"><span class="step-dot">1</span> Solicitar</div>
+        <div class="step-line"></div>
+        <div class="step"><span class="step-dot">2</span> Aprovação</div>
+        <div class="step-line"></div>
+        <div class="step"><span class="step-dot">3</span> Crachá</div>
+      </div>
 
-    <!-- ---------------------- -->
-    <!-- SCRIPTS JAVASCRIPT    -->
-    <!-- ---------------------- -->
-    <!-- Script principal para gerar QR Code -->
-    <script src="JS/qrcode.js" defer></script>
-    <!-- Biblioteca externa de QR Code -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+      <h1 class="inter-title">Solicitar QR Code de Acesso</h1>
+      <p class="inter-subtitle">Envie um pedido de liberação para a portaria gerar o seu acesso.</p>
 
+      <div class="info-banner">
+        <div class="info-banner-item">
+          <span class="material-icons">schedule</span>
+          <span>Validade de <strong>45 minutos</strong> após a aprovação.</span>
+        </div>
+        <div class="info-banner-item">
+          <span class="material-icons">looks_one</span>
+          <span>Código de <strong>uso único</strong> para entrada na portaria.</span>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button type="button" class="btnSolicitarQR">
+          <span class="material-icons">qr_code</span>
+          Solicitar QR Code
+        </button>
+
+        <button type="button" class="btnVoltar" onclick="window.location.href='home.html'">
+          <span class="material-icons">arrow_back</span>
+          Voltar ao perfil
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="JS/qrcode.js" defer></script>
 </body>
-
 </html>

@@ -1,139 +1,209 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
 /* ------------------------- */
-/* FOTO DO PERFIL            */
+/* CABEÇALHO DO CRACHÁ       */
 /* ------------------------- */
-
-.profile-picture {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 20px auto;
-  display: block;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+.badge-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--border);
 }
 
-
-/* ------------------------- */
-/* TEXTOS DO USUÁRIO         */
-/* ------------------------- */
-
-.info-text {
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
+.badge-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #fff;
-  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--primary);
+}
+
+.badge-brand img {
+  height: 32px;
+  width: auto;
+}
+
+/* ------------------------- */
+/* PERFIL DO USUÁRIO         */
+/* ------------------------- */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.profile-picture {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  background-color: var(--surface-subtle);
+  border: 3px solid #e2e8f0;
+  padding: 4px;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+/* ------------------------- */
+/* GRADE DE DADOS DO CRACHÁ  */
+/* ------------------------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.info-card {
+  background-color: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.info-card.full-width {
+  grid-column: span 2;
+}
+
+.info-text {
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.info-text .material-icons {
+  font-size: 16px;
+  color: var(--primary);
 }
 
 .userinfo-text {
-  font-family: "Montserrat", monospace;
-  font-size: 16px;
-  font-weight: 300;
-  color: #fff;
-  margin-bottom: 10px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  word-break: break-word;
 }
 
 /* ------------------------- */
-/* BOTÕES                    */
+/* QR CODE FIXO COLABORADOR  */
 /* ------------------------- */
+.fixed-qr-box {
+  background: var(--surface-subtle);
+  border: 1px dashed var(--border-input);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.fixed-qr-box h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.fixed-qr-box img {
+  width: 210px;
+  height: 210px;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+/* ------------------------- */
+/* BOTÕES DE AÇÃO            */
+/* ------------------------- */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btnGenerateQR,
+.btnEditProfile,
+.btnLogout {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  border: none;
+}
 
 .btnGenerateQR {
-  background-color: #0E6B4B
-  ;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(14, 107, 75, 0.22);
+}
+
+.btnGenerateQR:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
 }
 
 .btnEditProfile {
-  background-color: #c9cfd3;
-  color: #27445B;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: var(--surface-subtle);
+  color: var(--text-main);
+  border: 1px solid var(--border-input);
+}
+
+.btnEditProfile:hover {
+  background-color: #e2e8f0;
 }
 
 .btnLogout {
-  background-color: #e51a29;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: var(--danger-bg);
+  color: var(--danger);
+  padding: 8px 14px;
+  font-size: 13.5px;
+  border-radius: 8px;
 }
 
-button {
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 10px;
+.btnLogout:hover {
+  background-color: var(--danger);
+  color: #ffffff;
 }
 
-button:hover {
-  transform: scale(1.03);
-  filter: brightness(1.1);
-}
-
-/* ------------------------- */
-/* CONTÊINERES DE BOTÕES     */
-/* ------------------------- */
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-}
-
-.button-container-logout {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 20px;
-}
-
-/* ------------------------- */
-/* RESPONSIVIDADE HOME       */
-/* ------------------------- */
-
-@media (max-width: 480px) {
-  .profile-picture {
-    width: 150px;
-    height: 150px;
+@media (max-width: 520px) {
+  .info-grid {
+    grid-template-columns: 1fr;
   }
 
-  .button-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  button {
-    width: 100%;
+  .info-card.full-width {
+    grid-column: span 1;
   }
 }
